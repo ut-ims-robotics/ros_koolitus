@@ -1,4 +1,4 @@
-Tere tulemast Clearboti dokumentatsiooni!
+Tere tulemast ROS koolitusele!
 =========================================
 .. .. toctree::
 ..    :maxdepth: 2
@@ -7,21 +7,17 @@ Tere tulemast Clearboti dokumentatsiooni!
 
 ..    intro/introduction
 
-.. _labs:
+.. .. _day1:
+.. .. _day2:
+.. .. _day3:
 
 .. toctree::
    :maxdepth: 2
-   :caption: Praktikumid
+   :caption: Koolituse materjalid
 
-   labs/praktikum1
-   labs/praktikum2
-   labs/praktikum3
-   labs/praktikum4 
-   labs/praktikum5
-   labs/praktikum6
-   labs/praktikum7
-   labs/praktikum8
-
+   day1/day1
+   day2/day2
+   day3/day3
 
 .. Indices and tables
 .. ==================

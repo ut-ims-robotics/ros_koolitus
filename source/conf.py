@@ -20,14 +20,14 @@ def setup(app):
 
 # -- Project information -----------------------------------------------------
 
-project = 'Clearbot'
-copyright = u'2019, Madis Kaspar Nigol, Veiko Vunder, Renno Raudmäe'
-author = u'Madis Kaspar Nigol, Veiko Vunder, Renno Raudmäe'
+project = 'ROS Koolitus'
+copyright = u'2019, Litsents CC BY-ND-NC, Madis Kaspar Nigol, Veiko Vunder, Renno Raudmäe, Karl Kruusamäe'
+author = u'Madis Kaspar Nigol, Veiko Vunder, Renno Raudmäe, Karl Kruusamäe'
 
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '0.1 alpha'
+release = '0.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -105,7 +105,7 @@ html_static_path = []
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Clearbotdoc'
+htmlhelp_basename = 'roskoolitus'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -132,7 +132,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Clearbot.tex', 'Clearbot Documentation',
+    (master_doc, 'roskoolitus.tex', 'ROS koolituse materjalid',
      u'Madis Kaspar Nigol, Veiko Vunder, Renno Raudmäe', 'manual'),
 ]
 
@@ -142,7 +142,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'clearbot', 'Clearbot Documentation',
+    (master_doc, 'roskoolitus', 'ROS koolituse materjalid',
      [author], 1)
 ]
 
@@ -153,8 +153,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Clearbot', 'Clearbot Documentation',
-     author, 'Clearbot', 'One line description of project.',
+    (master_doc, 'roskoolitus', 'ROS koolituse materjalid',
+     author, 'roskoolitus', 'ROS koolituse materjalid',
      'Miscellaneous'),
 ]
 
