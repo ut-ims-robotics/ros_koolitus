@@ -6,57 +6,76 @@ Linux: terminal ja käsurida
 Mis ja milleks käsurida?
 ------------------------
 
+Käsurida on tekstipõhine kasutajaliides, mis kasutab teksti nii sisendiks kui ka väljundiks. Selle abil saab kasutada Linux operatsioonisüsteeme. Kuigi avavaates näeme Ubuntu puhul graafilist vaadet akende, paneelide, läbipaistvate teadetega jne, siis kõige selle taga on tegelikult erinevad käsud, mis on tavakasutaja eest ära peidetud.
+Lihtsamate tegevuste jaoks (internetis surfamine, e-kirjade lugemine, ettekande või tabelarvutuse programmi kasutamine, ...) graafilisest keskkonnast täiesti piisab, aga kui soovime Linuxi süsteemi kasvõi natukenegi rohkem seadistada ja kasutada selle kogu võimekust, siis on käsurea kasutamine hädavajalik.
 
 Kuidas avada terminaliakent?
 ----------------------------
 
-1.  Ava linuxi terminali aken:
+Variant 1:
+    a. Vajuta vasakul asuva tegumiriba kõige ülemisel ikoonil (Või klaviatuuril ⊞Win klahvi)
+    b. Trüki sisse "terminal”
+    c. Vajuta Terminali ikoonil
 
-    a. Selleks vajuta vasakusse üles nurka -> Trüki sisse "terminal” -> ning vajuta Terminali ikoonil
+    .. figure:: ../images/lab01/image1.png
+        :scale: 70 %
 
-        .. figure:: ../images/lab01/image1.png
-            :scale: 70 %
+        ..
 
-            ..
+Variant 2:
+    Kasuta klahvikombinatsiooni **Ctrl+Alt+T**
 
-        või vajuta klahvikombinatsiooni **Ctrl+Alt+T**
+Ilmub terminali aken:
+      .. figure:: ../images/lab01/image2.png
+        :scale: 70 %
 
-        Ilmub terminali aken:
+        ..
 
-        .. figure:: ../images/lab01/image2.png
-            :scale: 70 %
 
-            ..
+Käsu sisestamine ja navigeerimine
+---------------------------------
+
+Käsu sisestamiseks tuleb lihtsalt käsk kirjutada käsureale ja vajutada ENTER klahvi. 
+Tühikud on käsureal äärmiselt olulised, nende abil eraldatakse käsku ja käsu parameetreid ehk argumente.
+Kursorit saab liigutada vasaku/parema noole klahviga. Üles ja alla nooleklahvidega saab valida varem sisestatud käske.
+
+
+TAB klahv
+---------
+
+Käsureal on kõige tähtsam klahv klaviatuuril **TAB**. Vajutades TAB klahvi ühe korra, lõpetatakse käsk sinu eest. Kui käsu lõpetamiseks on erinevaid võimalusi, siis vajuta TAB klahvi veel üks kord ja kuvatakse loetelu võimalike variantidega. TAB osutub eriti kasulikuks näiteks siis, kui on vaja sisestada pikka või keerulist failinime.
+
+
 
 Kõige tähtsamad käsud Linuxi käsureal
 -------------------------------------
 
-.. code-block:: bash
 
-  ls
+ls
+^^^^
 
-Käsk **ls** ehk *list* näitab, mis on selles kaustas, kus parasjagu asud.
+Käsk **ls** ehk *list* kuvab kausta sisu, kus parasjagu asud.
 
-    a. 
+    a. Trüki terminali :code:`ls` ning vaata väljundit. Kuvatakse kaustad ja failid, mis asuvad selles kaustas, kus praegu asud. 
 
         .. figure:: ../images/lab01/image3.png
             :scale: 70 %
 
             ..
             
-        Trüki terminali **ls** ning vaata väljundit. Need on kaustad ja failid, mis asuvad selles kaustas, kus praegu asud. 
         *Mis värvi on väljundis kaustad ja mis värvi on failid?*
 
-    b.  Trüki terminali **ls -a**. Nüüd ilmub väljundisse palju rohkem nimesid.
+
+    b. Trüki terminali :code:`ls -la`. Nüüd ilmub väljundisse palju rohkem nimesid.
         Punktiga algavad kasutad ning failid on Linuxis enamasti peidetud. Nendes kaustades ning failides asuvad tavaliselt konfiguratsioonid operatsioonisüsteemile ning programmidele, 
-        seega ei tohi neid ilma Linuxist sügavamaid teadmisi omamata muuta.
+        neid faile ei tasu ilma Linuxist sügavamaid teadmisi omamata muuta.
         
         .. figure:: ../images/lab01/image4.png
             :scale: 70 %
 
             ..
 
-    c.  Trüki terminali **ls -la**. *Mis muutus? Mida uut väljundis failide kohta näed?*
+    c. Trüki terminali **ls -la**. *Mis muutus? Mida uut väljundis failide kohta näed?*
         
         .. figure:: ../images/lab01/image5.png
             :scale: 70 %

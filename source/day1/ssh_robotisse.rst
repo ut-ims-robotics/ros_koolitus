@@ -3,17 +3,21 @@ Kaugteel robotisse sisenemine (ssh)
 ===================================
 
 1.  Ava Linuxi terminali aken.
-2.  Trüki sinna: **ssh kasutaja@clearbot-*** ja vajuta ENTER.
-    NB! Tärni asemel sisesta oma roboti number, näiteks **ssh kasutaja@clearbot-2**.
+2.  Sisesta käsk kujul :code:`ssh kasutaja@clearbot-X`, kus X asenda oma roboti numbriga. Näiteks: 
+    ::
+    
+      ssh kasutaja@clearbot-2
 
     .. figure:: ../images/lab01/image30.png
         :scale: 70 %
 
         ..
 
-    a. Kui arvuti küsib yes/no variante, trüki sisse "yes” ning vajuta enter.
+    .. note:: Kui küsitakse yes/no variante, trüki sisse "yes” ning vajuta enter.
+
 3.  Järgmisena küsitakse parooli. 
-    :red:`NB! Linuxi terminali aknas ei ole parooli trükkimist näha. Seega, ära ehmu, kui sisestamisel tärne või mumme ei ilmu.  Lihtsalt sisesta parool ja vajuta Enter.`
+
+    .. warning:: NB! Linuxi terminali aknas ei ole parooli trükkimist näha. Seega, ära ehmu, kui sisestamisel tärne või mumme ei ilmu.  Lihtsalt sisesta parool ja vajuta Enter.
     
     a.  Parool on: t0ndik00bas
     b.  Kui tegid parooli sisestamisel vea, ilmub selline teade ja saad veel kaks korda uuesti proovida:

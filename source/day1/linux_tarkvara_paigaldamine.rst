@@ -18,16 +18,16 @@ Ja uue programmi paigaldamiseks:
 
 ::
 
-  sudo apt install <PROGRAMMINIMI>
+  sudo apt install PROGRAMMINIMI
 
-.. note:: <PROGRAMMINIMI> asemel sista programm mida soovid paigaldada. Näiteks :code:`sudo apt install firefox` või :code:`sudo apt install chromium-browser`.
+PROGRAMMINIMI asemel sista programm mida soovid paigaldada. Näiteks :code:`sudo apt install firefox` või :code:`sudo apt install chromium-browser`.
 
-.. note:: :code:`sudo` käivitab apt programmi administraatori õigustes.
+.. note:: :code:`sudo` käivitab :code:`apt` programmi administraatori õigustes.
 
 Ülesanne 1
 ^^^^^^^^^^
 
-Paigalda eelneva näite põhjal Linuxisse programm :code:`bastet`.
+Paigalda eelneva näite põhjal Linuxisse programm nimega :code:`bastet`.
 
 .. note:: :code:`sudo` kasutamisel küsitakse esimesel korral administraatori parooli. Sisesta :code:`t0ndik00bas` ja vajuta ENTER klahvi.
 
