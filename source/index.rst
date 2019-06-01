@@ -28,7 +28,12 @@ Tere tulemast ROS koolitusele!
   :maxdepth: 1
   :caption: 2. Päev
 
-  day2/praktikum2.rst
+  day2/sensors.rst
+
+  day2/move.rst  
+  day2/loops.rst  
+  day2/functions.rst  
+
   day2/praktikum3.rst
   day2/praktikum4.rst
   day2/praktikum5.rst
