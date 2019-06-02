@@ -1,12 +1,14 @@
-Praktikum 3 - Andurid, if-lause, bang-bang kontroller
-========================================================
-.. include:: ../include/beforethelabrobot.rst
+Roboti andurite info kuvamine
+=============================
 
 Mis andurid on Clearbotil?
 -----------------------------
 
-Clearbotil on peal Realsense D435 3D kaamera, millest saab tavalise kaamerapildi ja sügavuspildi.
-Käesolevas praktikumis kasutame 3D kaamerast sügavuspildi andmeid. Aga mitte toorelt. 
+Clearbotil on Realsense D435 3D kaamera, millest saab tavalise kaamerapildi ja sügavuspildi. 
+
+
+
+Siin kasutame 3D kaamerast sügavuspildi andmeid. Aga mitte toorelt. 
 Nimelt on 3D sügavuspildist võetud ainult üks riba ning tehtud sellest 2D laserskann. 
 See laserskann on omakorda jagatud kolmeks ja võetud minimaalsed takistuste kaugused paremal, keskel ja vasakul.
 
@@ -14,6 +16,31 @@ See laserskann on omakorda jagatud kolmeks ja võetud minimaalsed takistuste kau
             :scale: 70 %
 
             ..
+
+Kui kaugel on meist eespool paiknevad asjad?
+---------------------------------------------
+
+Selleks, et teada, kui kaugel on lähim asi vasakul, keskel ja paremal, 
+saame tellida ROS rubriiki “/scan_to_distance”, mis annab meile laserskannist arvutatud väärtused.
+
+1.  Ava terminal ning loo ssh-ühendus robotisse.
+2.  Kirjuta sinna
+
+    **roslaunch robotont_teleop teleop_with_laserscan.launch**
+
+3.  Nüüd ava uus terminal
+4.  Selleks, et vaadata, mis andmeid robot meile annab, kasutame terminalis käsku 
+
+    **rostopic echo /scan_to_distance**
+
+    .. figure:: ../images/lab03/terminal.png
+            :scale: 70 %
+
+            ..
+
+    *leftMin*, *centerMin* ja *rightMin* näitavad minimaalset kaugust igas sektoris. Ühikuks on meeter.
+
+5.  Liiguta oma kätt kaamera ees ning jälgi kuidas väärtused muutuvad.
 
 Samuti on roboti ratastel enkoodrid, mis mõõdavad, kui palju ratas on liikunud, kuid seda me veel siin praktikumis ei kasuta.
 
@@ -29,31 +56,6 @@ Kui kiirus on väiksem kui soovitud, annab kontroller gaasi
 ning kui kiirus on suurem kui soovitud, siis laseb gaasi lahti. 
 Ka selles praktikumis kirjutame ise kontrolleri.
 
-Kui kaugel on meist eespool paiknevad asjad?
-------------------------------------------------
-
-Selleks, et teada, kui kaugel on lähim asi vasakul, keskel ja paremal, 
-saame tellida ROS rubriiki “/scan_to_distance”, mis annab meile laserskannist arvutatud väärtused.
-
-1.  Ava terminal ning loo ssh-ühendus robotisse.
-2.  Kirjuta sinna
-
-    **roslaunch robotont_teleop teleop_with_laserscan.launch**
-
-    Kui väljund on väga punane, kutsu juhendaja
-3.  Nüüd ava uus terminal
-4.  Selleks, et vaadata, mis andmeid robot meile annab, kasutame terminalis käsku 
-
-    **rostopic echo /scan_to_distance**
-
-    .. figure:: ../images/lab03/terminal.png
-            :scale: 70 %
-
-            ..
-
-    *leftMin*, *centerMin* ja *rightMin* näitavad minimaalset kaugust igas sektoris. Ühikuks on meeter.
-
-5.  Liiguta oma kätt kaamera ees ning jälgi kuidas väärtused muutuvad.
 
 Nüüd kui oleme aru saanud, kuidas need kaugused töötavad, on aeg neid kasutada.
 

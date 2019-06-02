@@ -7,10 +7,10 @@ Mis ja milleks käsurida?
 ------------------------
 
 Käsurida on tekstipõhine kasutajaliides, mis kasutab teksti nii sisendiks kui ka väljundiks. Selle abil saab kasutada Linux operatsioonisüsteeme. Kuigi avavaates näeme Ubuntu puhul graafilist vaadet akende, paneelide, läbipaistvate teadetega jne, siis kõige selle taga on tegelikult erinevad käsud, mis on tavakasutaja eest ära peidetud.
-Lihtsamate tegevuste jaoks (internetis surfamine, e-kirjade lugemine, ettekande või tabelarvutuse programmi kasutamine, ...) graafilisest keskkonnast täiesti piisab, aga kui soovime Linuxi süsteemi kasvõi natukenegi rohkem seadistada ja kasutada selle kogu võimekust, siis on käsurea kasutamine hädavajalik.
+Lihtsamate tegevuste jaoks (internetis surfamine, e-kirjade lugemine, ettekande või tabelarvutuse programmi kasutamine, ...) graafilisest keskkonnast täiesti piisab, aga kui soovime Linuxi süsteemi kasvõi natukenegi rohkem seadistada ja kasutada selle kogu võimekust, siis tuleb kasutada käsurida.
 
-Kuidas avada terminaliakent?
-----------------------------
+Kuidas avada terminali akent?
+-----------------------------
 
 Variant 1:
     a. Vajuta vasakul asuva tegumiriba kõige ülemisel ikoonil (Või klaviatuuril ⊞Win klahvi)
@@ -26,6 +26,7 @@ Variant 2:
     Kasuta klahvikombinatsiooni **Ctrl+Alt+T**
 
 Ilmub terminali aken:
+
       .. figure:: ../images/lab01/image2.png
         :scale: 70 %
 
@@ -36,15 +37,18 @@ Käsu sisestamine ja navigeerimine
 ---------------------------------
 
 Käsu sisestamiseks tuleb lihtsalt käsk kirjutada käsureale ja vajutada ENTER klahvi. 
-Tühikud on käsureal äärmiselt olulised, nende abil eraldatakse käsku ja käsu parameetreid ehk argumente.
-Kursorit saab liigutada vasaku/parema noole klahviga. Üles ja alla nooleklahvidega saab valida varem sisestatud käske.
+Tühikud on käsureal äärmiselt olulised, nende abil eraldatakse käsku ja käsule kaasaantavaid parameetreid ehk argumente.
+
+Linuxi käsurida on tõstutundlik, mis tähendab, et käsud :code:`minuprogramm`, :code:`minuProgramm` või :code:`MinuProgramm` võivad käivitada hoopis eri programme. Enamasti on siiski käskude nimed esitatud väiketähtedes.
+
+Kursorit saab liigutada vasaku/parema noole klahviga.
+Üles ja alla nooleklahvidega saab valida varem sisestatud käske.
 
 
 TAB klahv
 ---------
 
 Käsureal on kõige tähtsam klahv klaviatuuril **TAB**. Vajutades TAB klahvi ühe korra, lõpetatakse käsk sinu eest. Kui käsu lõpetamiseks on erinevaid võimalusi, siis vajuta TAB klahvi veel üks kord ja kuvatakse loetelu võimalike variantidega. TAB osutub eriti kasulikuks näiteks siis, kui on vaja sisestada pikka või keerulist failinime.
-
 
 
 Kõige tähtsamad käsud Linuxi käsureal
@@ -66,16 +70,16 @@ Käsk **ls** ehk *list* kuvab kausta sisu, kus parasjagu asud.
         *Mis värvi on väljundis kaustad ja mis värvi on failid?*
 
 
-    b. Trüki terminali :code:`ls -la`. Nüüd ilmub väljundisse palju rohkem nimesid.
-        Punktiga algavad kasutad ning failid on Linuxis enamasti peidetud. Nendes kaustades ning failides asuvad tavaliselt konfiguratsioonid operatsioonisüsteemile ning programmidele, 
-        neid faile ei tasu ilma Linuxist sügavamaid teadmisi omamata muuta.
+    b. Trüki terminali :code:`ls -a`. Nüüd ilmub väljundisse palju rohkem nimesid.
+       Punktiga algavad kasutad ning failid on Linuxis enamasti peidetud. Nendes kaustades ning failides asuvad tavaliselt konfiguratsioonid operatsioonisüsteemile ning programmidele, 
+       neid faile ei tasu ilma Linuxist sügavamaid teadmisi omamata muuta.
         
         .. figure:: ../images/lab01/image4.png
             :scale: 70 %
 
             ..
 
-    c. Trüki terminali **ls -la**. *Mis muutus? Mida uut väljundis failide kohta näed?*
+    c. Trüki terminali :code:`ls -a`. *Mis muutus? Mida uut väljundis failide kohta näed?*
         
         .. figure:: ../images/lab01/image5.png
             :scale: 70 %
@@ -88,68 +92,83 @@ Käsk **ls** ehk *list* kuvab kausta sisu, kus parasjagu asud.
 
             ..
 
-3. **mkdir**
+mkdir
+^^^^^
 
     Nüüd õpime, kuidas teha Linuxi terminalis kausta.
 
-    a.  Teeme kausta nimega "asjad”. Linuxis kausta tegemiseks on käsk **mkdir** ehk *make directory*. Trüki terminali **mkdir asjad**. 
+    a.  Teeme kausta nimega "asjad". Linuxis kausta tegemiseks on käsk :code:`mkdir` ehk *make directory*. Trüki terminali
+
+        .. code-block:: bash  
+    
+          mkdir asjad 
 
         .. figure:: ../images/lab01/image7.png
             :scale: 70 %
 
             ..
 
-    b.  Nüüd kasuta eelmises punktis *list*'i kohta õpitut, et näha, kas sinu tehtud kaust tekkis sinna.  Linuxis pääsed eelmiste käskude ligi ka kasutades üles noolt.
+    b.  Nüüd kasuta eelmises punktis *list*'i kohta õpitut, et näha, kas kausta tegemine õnnestus.
 
         .. figure:: ../images/lab01/image8.png
             :scale: 70 %
 
             ..
 
-4. **cd**  
+cd  
+^^^^
 
-    Selleks, et terminalis kaustade vahel liikuda, on käsk **cd** ehk *change directory*.
+    Selleks, et terminalis kaustade vahel liikuda, on käsk :code:`cd` ehk *change directory*.
     
-    a.  Lähme kausta, mis me just tegime. Selleks kirjutame terminalis **cd asjad**.
+    a.  Lähme kausta, mille just tegime. Selleks kirjutame terminali
+
+        .. code-block:: bash  
+    
+           cd asjad
 
         .. figure:: ../images/lab01/image9.png
             :scale: 70 %
 
             ..
 
-    b.  Nüüd kasuta käsku **ls**, et näha, kas kaust on tühi.
+    b.  Kaust peaks olema tühi, veendu selles käsuga :code:`ls`.
 
         .. figure:: ../images/lab01/image10.png
             :scale: 70 %
 
             ..
 
-    c.  Teeme siia kausta ühe alamkausta nimega "asi”. Selleks kirjutame **mkdir asi**.
-    d.  Trüki terminali **ls -a**. Siin näed kolme kausta. ".”, "..” ja "asi”. 
+    c.  Teeme siia kausta ühe alamkausta nimega "asi”. Selleks kirjutame
+
+        .. code-block:: bash  
+    
+           mkdir asi
+
+    d.  :code:`ls -a` näitab, et kaust "asi" loodi, kuid kuvab lisaks veel kahte kausta "." ja "..". Linuxis tähistab kaust "." seda kausta, kus praegu asud. Kaust ".." tähendab praeguse kausta ülemkausta.
 
         .. figure:: ../images/lab01/image11.png
             :scale: 70 %
 
             ..
 
-    e.  Linuxis kaust ".” tähendab seda kausta, kus praegu asud. Kaust "..” tähendab praeguse kausta ülemkausta.
-    f.  Lähme tehtud alamkausta, kasutades käsku **cd asi**. Selleks, et tagasi, kaust ülespoole, saada, kasutame käsku **cd ..**.
+    e.  Lähme tehtud alamkausta, kasutades käsku :code:`cd asi`. Selleks, et minna tagasi ülemkausta "asjad", kasutame käsku :code:`cd ..`.
 
         .. figure:: ../images/lab01/image12.png
             :scale: 70 %
 
             ..
 
-5.  **pwd** ja failisüsteem
+pwd ja failisüsteem
+^^^^^^^^^^^^^^^^^^^
 
-    Käsk **pwd** näitab täielikku teed failisüsteemis praegusesse kausta.
+    Käsk :code:`pwd` näitab täielikku teed failisüsteemis praegusesse kausta.
 
     .. figure:: ../images/lab01/image13.png
             :scale: 70 %
 
             ..
 
-    a.  Kirjuta terminali **cd**, et saada kodukausta. (Kui käsule **cd** ei anta argumente, siis viib see käsk kodukausta)
+    a.  Kui käsk :code:`cd` sisestada ilma argumentdeta, siis viib see kodukausta. Proovi järele.
 
         .. figure:: ../images/lab01/image14.png
             :scale: 70 %
@@ -171,7 +190,9 @@ Käsk **ls** ehk *list* kuvab kausta sisu, kus parasjagu asud.
 
             ..
 
-6. **nano**
+Faili sisu muutmine nano
+------------------------
+
     a.  Kasuta käsku **cd**, et minna kausta "asi”.
 
         .. figure:: ../images/lab01/image17.png
@@ -277,18 +298,3 @@ Käsk **ls** ehk *list* kuvab kausta sisu, kus parasjagu asud.
             :scale: 70 %
 
             ..
-
-.. Kui töötad simulatsioonis
-.. -------------------------------------
-
-.. .. toggle-header::
-..     :header: **Kui töötad simulatsioonis**
-
-..         Kui töötad simulatsioonis, siis järgnevate peatükkide asemel lähevad käiku teised käsud.
-..         Antud juhul saab kogu simulatsiooni ning klaviatuuriga juhtimise käima panna ühe käsuga.
-
-..         1.  Ava terminal.
-..         2.  Sisesta käsk
-..             **roslaunch robotont_description gazebo_teleop_keyboard.launch**
-..         3.  Kui kõik läks hästi, siis avanes simulatsioon, kus näed robotit.
-..         4.  Juhendi lõpust leiad, mis nuppudega robotit juhtida. Juhtimiseks peab olema terminaliaken aktiivne.

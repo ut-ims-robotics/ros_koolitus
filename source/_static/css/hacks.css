@@ -4,6 +4,11 @@
  * :license: GPLv3, see LICENSE for details.
  */
 
+.code {
+  color: #404040 !important;
+  background: #edf0f2 !important;
+}
+
 
 /* Colors and text decoration.
  For example, :black:`text in black` or :blink:`text blinking` in rST. */

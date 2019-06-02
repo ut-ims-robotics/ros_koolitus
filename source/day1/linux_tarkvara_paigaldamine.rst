@@ -6,7 +6,7 @@ Linux: Uue tarkvara paigaldamine
 APT ja selle kasutamine
 -----------------------
 
-APT ehk *Advanced Package Manager* on programm, millega Linuxis mugavalt tarkvara paigaldada ja eemaldada. APT hoiab nimekirja erinevatest allikatest ehk repositooriumidest, laeb alla vajalikud tarkvarapaketid ning kopeerib failid õigetesse kohtadesse.
+APT ehk *Advanced Package Tool* on programm, millega Linuxis mugavalt tarkvara paigaldada ja eemaldada. APT hoiab nimekirja erinevatest allikatest ehk repositooriumidest, laeb alla vajalikud tarkvarapaketid ning kopeerib failid õigetesse kohtadesse.
 
 Tarkvaraallikate ja programmide nimekirja värskendamiseks on käsk:
 
