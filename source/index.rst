@@ -43,9 +43,7 @@ Tere tulemast ROS koolitusele!
   :caption: 3. Päev
 
   day3/2D_mapping.rst
-  day3/praktikum6.rst
-  day3/praktikum7.rst
-  day3/praktikum8.rst
+  day3/3D_mapping.rst
 
 .. Indices and tables
 .. ==================

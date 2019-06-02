@@ -144,6 +144,3 @@ Selles ülesandes peab robot oskama nurga alt lähenedes avast läbi sõita.
 
 5.  Demonstreeri töötavat robotit juhendajale.
 
-
-
-.. include:: ../include/afterthelabrobot.rst

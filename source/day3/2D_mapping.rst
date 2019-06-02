@@ -1,5 +1,5 @@
-Praktikum 5 - 2d kaardistamine, automaatne navigeerimine
-============================================================
+2d kaardistamine, automaatne navigeerimine
+==========================================
 
 Mis on kaardistamine?
 -----------------------

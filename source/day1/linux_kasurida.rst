@@ -14,7 +14,7 @@ Kuidas avada terminali akent?
 
 Variant 1:
     a. Vajuta vasakul asuva tegumiriba kõige ülemisel ikoonil (Või klaviatuuril ⊞Win klahvi)
-    b. Trüki sisse "terminal”
+    b. Trüki sisse "terminal"
     c. Vajuta Terminali ikoonil
 
     .. figure:: ../images/lab01/image1.png
@@ -46,7 +46,7 @@ Kursorit saab liigutada vasaku/parema noole klahviga.
 
 
 TAB klahv
----------
+^^^^^^^^^
 
 Käsureal on kõige tähtsam klahv klaviatuuril **TAB**. Vajutades TAB klahvi ühe korra, lõpetatakse käsk sinu eest. Kui käsu lõpetamiseks on erinevaid võimalusi, siis vajuta TAB klahvi veel üks kord ja kuvatakse loetelu võimalike variantidega. TAB osutub eriti kasulikuks näiteks siis, kui on vaja sisestada pikka või keerulist failinime.
 
@@ -101,7 +101,7 @@ mkdir
 
         .. code-block:: bash  
     
-          mkdir asjad 
+           mkdir asjad 
 
         .. figure:: ../images/lab01/image7.png
             :scale: 70 %
@@ -138,90 +138,115 @@ cd
 
             ..
 
-    c.  Teeme siia kausta ühe alamkausta nimega "asi”. Selleks kirjutame
+    c.  Teeme siia kausta ühe alamkausta nimega "asi". Selleks kirjutame
 
         .. code-block:: bash  
     
            mkdir asi
 
-    d.  :code:`ls -a` näitab, et kaust "asi" loodi, kuid kuvab lisaks veel kahte kausta "." ja "..". Linuxis tähistab kaust "." seda kausta, kus praegu asud. Kaust ".." tähendab praeguse kausta ülemkausta.
+    d.  :code:`ls -a` näitab, et kaust "asi" loodi, kuid kuvab lisaks veel kahte kausta "." ja "..". Linuxis on neil kindel tähendus:
+
+          | :code:`.` tähistab kausta, kus hetkel asud;
+          | :code:`..` tähistab praeguse kausta ülemkausta.
 
         .. figure:: ../images/lab01/image11.png
             :scale: 70 %
 
             ..
 
-    e.  Lähme tehtud alamkausta, kasutades käsku :code:`cd asi`. Selleks, et minna tagasi ülemkausta "asjad", kasutame käsku :code:`cd ..`.
+    e.  Lähme tehtud alamkausta, kasutades käsku :code:`cd asi`. Selleks, et minna tagasi ülemkausta "asjad", sisestame:
+
+        .. code-block:: bash
+
+           cd ..
 
         .. figure:: ../images/lab01/image12.png
             :scale: 70 %
 
             ..
 
-pwd ja failisüsteem
-^^^^^^^^^^^^^^^^^^^
+    f.  Kui käsk :code:`cd` sisestada ilma argumentdeta, siis viib see kodukausta. Proovi järele!
+
+        .. figure:: ../images/lab01/image14.png
+           :scale: 70 %
+
+           ..
+
+    Reeglina vahetatakse kausta siis, kui on plaanis seal pikemat aega töötada, sest enamike käskude ja programmide kasutamiseks ei ole kausta vahetamine vajalik. Näiteks selleks, et kuvada kausta asjad sisu, võime vabalt olla kodukaustas ja kasutada käsku :code:`ls` koos täiendava argumendiga, mis täpsustab, millise kausta sisu soovime kuvada.
+
+    .. code-block:: bash
+
+       ls asjad
+
+    Nii näed kausta "asjad" sisu ilma kausta vahetamata.
+   
+    .. tip:: Eelmine käsk eeldab, et asume kodukaustas. Kui soovid kuvada kausta "asjad" sisu asudes ise suvalises kaustas, siis tuleb tee kaustani anda absoluutsel kujul ehk alates failisüsteemi juurest. Antud juhul :code:`ls /home/kasutaja/asjad` või lühemalt :code:`ls ~/asjad`
+
+    g.  Eelneva näite põhjal, proovi kodukaustast kuvada kausta "asi" sisu.
+
+    Hetkel on see kaust tühi ja käsk peaks lõpetama töö ilma väljundit andmata.
+
+    .. figure:: ../images/lab01/image16.png
+      :scale: 70 %
+
+      ..
+
+
+pwd
+^^^^
 
     Käsk :code:`pwd` näitab täielikku teed failisüsteemis praegusesse kausta.
 
     .. figure:: ../images/lab01/image13.png
-            :scale: 70 %
+       :scale: 70 %
 
-            ..
+       ..
 
-    a.  Kui käsk :code:`cd` sisestada ilma argumentdeta, siis viib see kodukausta. Proovi järele.
 
-        .. figure:: ../images/lab01/image14.png
-            :scale: 70 %
+    e.  Liigu iseseisvalt failipuus ringi, sisene suvalistesse kaustadesse, samal ajal kontrollides oma asukohta :code:`pwd` abil.
 
-            ..
+        .. tip:: Kui peaksid kaustade rägastikus ära eksima, siis kodukausta tagasi aitavad :code:`cd ~` või lihtsalt :code:`cd` ilma argumentideta.
 
-    b.  Selleks, et näha mingi kausta sisu, saab samuti kasutada käsku **ls**. Kirjuta terminali **ls asjad**. Nii näed kausta "asjad” sisu.
-    c.  Nüüd kirjuta terminali **ls asi**. *Mis nüüd juhtus?*
+Faili sisu muutmine programmiga nano
+------------------------------------
 
-        .. figure:: ../images/lab01/image15.png
-            :scale: 70 %
+    a.  Lähme kasuta "asi":
+    
+        .. code-block:: bash
 
-            ..
-
-    d.  Selleks, et näha kodukaustast kausta "asi” sisu, tuleb käsule ls anda tee selle kaustani. Antud juhul on selleks "asjad/asi”. Seega kausta "asi” sisu näeme, kui trükime kodukaustas "ls asjad/asi”. Hetkel on see kaust tühi.
-
-        .. figure:: ../images/lab01/image16.png
-            :scale: 70 %
-
-            ..
-
-Faili sisu muutmine nano
-------------------------
-
-    a.  Kasuta käsku **cd**, et minna kausta "asi”.
+           cd ~/asi
 
         .. figure:: ../images/lab01/image17.png
             :scale: 70 %
 
             ..
 
-    b.  Selles kaustas tee uus tekstifail, kasutades tekstiredaktorit **nano**. Selleks, et teha fail nimega "test.txt” ja sinna midagi kirjutada, kasutame kaustas "asi” käsku **nano test.txt**.
+    b.  Teeme tekstiredaktor :code:`nano` abil uue tekstifaili:
+
+        .. code-block:: bash
+
+             nano test.txt
 
         .. figure:: ../images/lab01/image18.png
-            :scale: 70 %
+           :scale: 70 %
 
-            ..
+           ..
 
-        Nüüd avanes järgnev pilt:
+        Seejärel ilmub terminali aknasse tekstiredaktori avavaade. Nüüd on "test.txt" avatud muutmiseks.
 
         .. figure:: ../images/lab01/image19.png
-            :scale: 70 %
+           :scale: 70 %
 
-            ..
+           ..
 
-    c.  Olles **nano**'s, saad kirjutada selle faili sisse, mis just avasid. Kirjuta midagi siia. 
+    c.  Kuna tegemist on uue failiga, siis kirjutame midagi faili. 
 
         .. figure:: ../images/lab01/image20.png
             :scale: 70 %
 
             ..
 
-        Selleks, et nanost väljuda, vajutame alguses Ctrl+X. Seejärel küsib programm, kas soovid faili salvestada. Trüki sisse "y” ning vajuta Enterit.
+        Selleks, et nanost väljuda, vajuta CTRL+X. Kui oled faili muutnud, küsib programm üle, kas soovid muudatused salvestada. Trüki sisse :code:`y` ning vajuta Enterit.
 
         .. figure:: ../images/lab01/image21.png
             :scale: 70 %
@@ -233,68 +258,101 @@ Faili sisu muutmine nano
 
             ..
 
-    d.  Kontrolli, et fail tekkis, kasutades käsku **ls**.
+    d.  Kontrolli, et fail tekkis, kasutades käsku :code:`ls`.
 
         .. figure:: ../images/lab01/image23.png
             :scale: 70 %
 
             ..
            
-7. **cat**
-    a.  Käsk **cat** võimaldab näha tekstifailide sisu ilma faili avamata. Olles kaustas "asi”, trüki terminali **cat test.txt**. *Kas ilmus tuttav tekst?*
+Faili sisu kuvamine käsuga :code:`cat`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    a.  Käsk :code:`cat` võimaldab näha tekstifailide sisu ilma faili avamata. Olles kaustas "asi", trüki terminali :code:`cat test.txt`. *Kas ilmus tuttav tekst?*
 
         .. figure:: ../images/lab01/image24.png
             :scale: 70 %
 
             ..
             
-    b.  Lähme ühe kausta ülespoole, kasutades käsku **cd ..**. Käsuga **cat**, nagu eelnevalt käsuga **ls** (ja enamasti Linuxi käskudega),
-        saab anda ette tee failisüsteemis ehk saame vaadata faili sisu, mis ei asu samas kaustas, kus meie. 
-        Olles kaustas "asjad”, trüki terminali **cat asi/test.txt**. *Kas ilmus sama tekst?*
+    b.  Lähme ühe kausta ülespoole :code:`cd ..` ja vaatame uuesti sama faili sisu kaustas "asi". Sarnaselt eelnevalt kasutatud :code:`ls` käsule: 
+    
+    .. code-block:: bash
+       
+       cat asi/test.txt
+    
+
+*Kas ilmus sama tekst?* 
 
         .. figure:: ../images/lab01/image25.png
             :scale: 70 %
 
             ..
 
-    c.  Kasuta nüüd eelnevaid teadmisi, et muuta test.txt sisu ning kuva see ekraanile kasutades käsku **cat**.
+    c. Kas suudad jälgida ja selgitada, kuidas töötab järgmine käsk? Proovi järele.
+
+        .. code-block:: bash
+
+           cat asi/../../asjad/asi/../asi/./test.txt
+
+    d.  Kasuta nüüd eelnevaid teadmisi, et muuta test.txt sisu ning kuva see ekraanile kasutades käsku :code:`cat`.
 
         .. figure:: ../images/lab01/image26.png
-            :scale: 70 %
+           :scale: 70 %
 
-            ..
+           ..
 
-8.  **mv** ja **cp** ja **rm**
+Failide liigutamine, kopeerimine, eemaldamine
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Käsku **mv** ehk move saame kasutada, et faile liigutada ja ümber nimetada.
-    Käsku **cp** ehk copy saame kasutada, et faile kopeerida.
-    Käsku **rm** ehk remove saame kasutada, et faile kustutada.
+  | Käsku :code:`mv` ehk *move* saame kasutada, et faile liigutada ja ümber nimetada.
+  | Käsku :code:`cp` ehk *copy* saame kasutada, et faile kopeerida.
+  | Käsku :code:`rm` ehk *remove* saame kasutada, et faile kustutada.
+    
+    a.  Käsk :code:`cp` vajab kahte argumenti kujul :code:`cp [kust] [kuhu]`. Esimese argumendiga ütleme, mis faili soovime kopeerida ja teise argumendiga kuhu soovime koopia paigutada. Lähme kausta "asjad" ja kopeerime sinna tekstifaili alamkaustast "asi":
+    
+        .. code-block:: bash
 
-    a.  Kasutame käsku **cp**, et kopeerida "test.txt” üks kaust kõrgemale. Selleks lähme kausta "asjad” ning kasutame käsku **cp asi/test.txt .** 
+           cd ~/asjad
+           cp asi/test.txt .
         
-        Siin näeme ka punkti kasutust käsus, mis tähendab praegust kausta.
-        **cp** ja **mv** tahavad kahte argumenti, esimesena fail, mida liigutatakse ja teiseks asukoht, kuhu liigutatakse.
-    b.  Kontrolli käsuga **ls**, kas mõlemas kaustas on nüüd fail "test.txt”.
+    Siin näeme ka punkti kasutust käsus, mis määrab kopeerimise sihtkohaks praeguse kausta.
+
+
+    b.  Kontrolli käsuga :code:`ls`, et mõlemas kaustas oleks nüüd fail "test.txt".
   
         .. figure:: ../images/lab01/image27.png
-            :scale: 70 %
+           :scale: 70 %
 
-            ..
+           ..
 
-    c.  Järgmisena kasutame käsku **rm**, et kustutada ära originaalfail. Olles kaustas "asjad”, trüki sisse **rm asi/test.txt**.
-    d.  Kontrolli, kas nüüd on "test.txt” ainult ühes kaustas.
+    c.  Järgmisena kasutame käsku :code:`rm`, ja kustutame ära originaalfaili. Olles kaustas "asjad", trüki sisse :code:`rm asi/test.txt`.
+
+    .. code-block:: bash
+
+       rm asi/test.txt
+
+    d.  Kontrolli, kas nüüd on "test.txt" ainult ühes kaustas.
 
         .. figure:: ../images/lab01/image28.png
-            :scale: 70 %
+           :scale: 70 %
 
-            ..
+           ..
 
-    e.  Selleks, et faile ümber nimetada ja kaustast kausta tõsta, kasutame käsku **mv**. 
-        Tõstame faili "test.txt” kausta "asi” ning nimetame selle ümber failiks "test1.txt”. 
-        Selleks, olles kaustas "asjad”, trüki terminali **mv test.txt asi/test1.txt**.
-    f.  Kontrolli, kas sai fail ilusti liigutatud ja nimetatud. Nüüd ei tohi enam faili "test.txt” eksisteerida.
+    e.  Selleks, et faile ümber nimetada ja ühest kaustast teise tõsta, on käsk :code:`mv`. 
+        Tõstame faili "test.txt" kausta "asi" ning samaaegselt nimetame selle ümber failiks "test1.txt". 
+        Selleks, olles kaustas "asjad", trüki terminali:
+
+    .. code-block:: bash
+
+       mv test.txt asi/test1.txt
+
+Sarnaselt käsule :code:`cp` ootab käsk :code:`mv` kahte argumenti. Esimene määrab faili mida liigutatakse, ja teine asukoha, kuhu liigutatakse.
+
+    f.  Kontrolli, kas fail sai ilusti liigutatud ja eksisteerib uue nimega kaustas "asi".
 
         .. figure:: ../images/lab01/image29.png
-            :scale: 70 %
+           :scale: 70 %
 
-            ..
+           ..
+

@@ -12,7 +12,7 @@ Süsteemi kaustadesse paigaldatud programmide käivitamiseks on lihtsalt vaja ki
 Ülesanne 1
 ^^^^^^^^^^
 
-Käivita eelnevas ülesandes paigaldatud programm :code:`bastet`:.
+Käivita eelnevas ülesandes paigaldatud programm :code:`bastet`.
 
-.. note:: Programmide peatamiseks on Linuxis universaalne klahvikombinatsioon CTRL-C
+.. note:: Programmide peatamiseks on Linuxis universaalne klahvikombinatsioon CTRL+C.
 

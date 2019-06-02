@@ -1,6 +1,5 @@
-Praktikum 4 - AR markerid
+AR markerid
 ====================================
-.. include:: ../include/beforethelabrobot.rst
 
 Mis on liitreaalsus (AR) ja AR-markerid?
 ---------------------------------------------
@@ -152,7 +151,3 @@ Tee programm, mis teeb ühe markeriga üht asja, teisega teist. Näiteks kui rob
 3.  Demonstreeri töötavat koodi juhendajale.
 
 
-
-
-
-.. include:: ../include/afterthelabrobot.rst

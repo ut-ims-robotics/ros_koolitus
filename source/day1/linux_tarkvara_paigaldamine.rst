@@ -31,7 +31,7 @@ Paigalda eelneva näite põhjal Linuxisse programm nimega :code:`bastet`.
 
 .. note:: :code:`sudo` kasutamisel küsitakse esimesel korral administraatori parooli. Sisesta :code:`t0ndik00bas` ja vajuta ENTER klahvi.
 
-.. warning:: Linuxi terminali aknas ei ole parooli trükkimist näha. Seega, ära ehmu, kui sisestamisel tärne või mumme ei ilmu.  Lihtsalt sisesta parool ja vajuta Enter.
+.. tip:: Linuxi terminali aknas ei ole parooli trükkimist näha. Seega, ära ehmu, kui sisestamisel tärne või mumme ei ilmu.  Lihtsalt sisesta parool ja vajuta Enter.
 
 Enne soovitud programmi paigaldamist kuvab APTkõikide pakkide nimekirja, ja küsib paigaldamiseks kinnitust. Sisesta :code:`y` ja vajuta Enter klahvi.
 
