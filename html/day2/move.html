@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="et" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="et" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Programmeerime ROS roboti sõitma &mdash; ROS Koolitus 0.1 dokumentatsioon</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script type="text/javascript" src="../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/hacks.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Otsing" href="../search.html" />
+    <link rel="next" title="For- ja while tsüklid roboti juhtimisel" href="loops.html" />
+    <link rel="prev" title="ROS sissejuhatus" href="ROS_intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ROS Koolitus
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">1. Päev</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../day1/linux_ylevaade.html">Linux: Ubuntu 16.04 sissejuhatus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day1/linux_kasurida.html">Linux: terminal ja käsurida</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day1/linux_tarkvara_paigaldamine.html">Linux: Uue tarkvara paigaldamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day1/linux_programmide_kaivitamine.html">Linux: Programmide käivitamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day1/ssh_robotisse.html">Kaugteel robotisse sisenemine (ssh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day1/roboti_draiveri_kaivitamine.html">Roboti ROS juhtprogrammi käivitamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day1/roboti_klaviatuurilt_juhtimine.html">Roboti juhtimine klaviatuuriga</a></li>
+</ul>
+<p class="caption"><span class="caption-text">2. Päev</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ROS_intro.html">ROS sissejuhatus</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programmeerime ROS roboti sõitma</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sissejuhatus">Sissejuhatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-rubriigid">ROS-rubriigid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rubriik-cmd-vel">Rubriik <em>cmd_vel</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#naiteulesanne">Näiteülesanne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programmi-kaitamine-simulaatoris">Programmi käitamine simulaatoris</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programmi-kaitamine-robotil">Programmi käitamine robotil</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html"><em>For</em>- ja <em>while</em> tsüklid roboti juhtimisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Funktsioonid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors.html">Roboti andurite info kuvamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AR_markerid.html">AR markerid</a></li>
+</ul>
+<p class="caption"><span class="caption-text">3. Päev</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../day3/2D_mapping.html">2d kaardistamine, automaatne navigeerimine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day3/3D_mapping.html">Praktikum 6 - 3D kaardistamine</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ROS Koolitus</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Programmeerime ROS roboti sõitma</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/day2/move.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="programmeerime-ros-roboti-soitma">
+<h1>Programmeerime ROS roboti sõitma<a class="headerlink" href="#programmeerime-ros-roboti-soitma" title="Püsiviit sellele pealkirjale">¶</a></h1>
+<div class="section" id="sissejuhatus">
+<h2>Sissejuhatus<a class="headerlink" href="#sissejuhatus" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<p>Selles sektsioonis kirjutame programmi, mis paneb roboti sõitma. ROSis on enamasti kasutusel programmeerimiskeeled C++ ja Python. Meie valik on Python, sest see on lihtsam ja sobib paremini programmeerimisega alustamiseks. Pythoniga tutvumisel on abiks Tartu Ülikooli arvutiteaduste instituudi <a class="reference external" href="https://progeopik.cs.ut.ee/index.html">programmeerimisõpik</a>.</p>
+</div>
+<div class="section" id="ros-rubriigid">
+<h2>ROS-rubriigid<a class="headerlink" href="#ros-rubriigid" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<p>ROSis töötavad samal ajal erinevad sõlmed. Sõlmed on programmid, mis täidavad ROSis mingit konkreetset ülesannet. Näiteks võib üks sõlm suhelda kaameraga ja saata sealt pilti, teine sõlm liigutada soovitud suunas roboti rattad, kolmanda sõlme abil juhtida robotit klaviatuuri abil jne.</p>
+<p>Selleks, et kogu robot ühtsena töötaks, peavad sõlmed omavahel suhtlema. Näiteks sõlm, mis paneb rattad liikuma, peab teadma kuhu suunas rattad liikuma panna ning see informatsioon tuleb sõlmelt, kus saad klaviatuuriga robotit juhtida.
+Suhtlemiseks on ROSis kasutusel ROS-rubriigid.
+Rubriigil on oma nimi ning sõlmed saavad sinna sõnumeid kuulutada ning sealt tellida.
+Roboti kiiruse määramiseks on ROSis kujunenud standard rubriik nimega “cmd_vel” (<em>velocity command</em>). Sinna rubriiki saab kuulutada sõnumeid, mis määravad kuhu poole robot liikuma peaks. Samaaegselt tellib sellest rubriigist sõnumeid rattaid juhtiv sõlm, mis edastab saabunud kiirused juba rattaid kontrollivale juhtelektroonikale.</p>
+</div>
+<div class="section" id="rubriik-cmd-vel">
+<h2>Rubriik <em>cmd_vel</em><a class="headerlink" href="#rubriik-cmd-vel" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<p>Selleks, et robot liikuma hakkaks, peame sellele edastama info, kui kiiresti ja mis suunas liikuda.
+Selleks on meile muutmiseks saadaval kolm argumenti: x-suunaline kiirus, y-suunaline kiirus ja z-telje ümber pöörlemiskiirus.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/coord.png"><img alt="../_images/coord.png" src="../_images/coord.png" style="width: 1050.0px; height: 849.1px;" /></a>
+</div>
+<p>Positiivsed x’i väärtused panevad roboti edasi sõitma, negatiivsed tagurpidi.
+Positiivsed y’i väärtused panevad roboti vasakule sõitma, negatiivsed paremale.
+Positiivsed z’i väärtused panevad roboti vastupäeva pöörlema, negatiivsed päripäeva.
+x ja y väärtused on ühikutes <em>m/s</em>, seega hoia need alla ühe.</p>
+<p>Etteantud näidiskoodis on võimalus muuta kõiki kolme argumenti.
+Esimene eesmärk on aru saada, kuidas need töötavad, et oskaks hiljem neid kasutada ka keerukamatel juhtudel.
+Leia koodis see koht ning muutes x, y ja z väärtusi, lahenda järgnevad ülesanded.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vel_msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">velocity_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel_msg</span><span class="p">)</span>
+<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="naiteulesanne">
+<h2>Näiteülesanne<a class="headerlink" href="#naiteulesanne" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<ol class="arabic simple">
+<li>Ava terminal ja sisesta käsk</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>nano catkin_ws/src/ros_koolitus/scripts/move.py
+</pre></div>
+</div>
+<p>See avab Python’i faili, kus hakkame väärtusi muutma.</p>
+<ol class="arabic" start="2">
+<li><p class="first">Failis on muudatuste tegemiseks eraldi ala, mis on ümbritsetud ridadega <code class="code docutils literal notranslate"><span class="pre">YOUR</span> <span class="pre">CODE</span> <span class="pre">HERE</span> <span class="pre">START</span></code> ja <code class="code docutils literal notranslate"><span class="pre">YOUR</span> <span class="pre">CODE</span> <span class="pre">HERE</span> <span class="pre">END</span></code>.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/yourcodehere.png"><img alt="../_images/yourcodehere.png" src="../_images/yourcodehere.png" style="width: 354.2px; height: 270.9px;" /></a>
+</div>
+</li>
+<li><p class="first">Määra <em>vel_msg.linear.x</em> väärtuseks 0.2.</p>
+</li>
+<li><p class="first">Salvesta ning välju.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="programmi-kaitamine-simulaatoris">
+<h2>Programmi käitamine simulaatoris<a class="headerlink" href="#programmi-kaitamine-simulaatoris" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<p>Tarkvara arendamisel tekib tihtipeale vigu, mis näiteks suurte tööstusrobotite puhul võivad põhjustada pöördumatut kahju nii robotile endale, ümbritsevatele objektidele kui ka roboti operaatorile. Selle vältimiseks on enne programmi käivitamist päris robotil alati kasulik seda põhjalikult testida simulaatoris. ROSi simulatsioonikeskkonnaks on Gazebo. Gazebo võimaldab luua virtuaalse maailma, paigutada sinna robot, ja simuleerida toimuvat.
+Gazebo käitamiseks ava uus terminali aken ning sisesta käsk:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_description gazebo.launch
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Nüüd otsi uuesti üles eelmine terminal ja käivita seal oma muudatustega programm:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>rosrun robotont_koolitus move.py
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Märkus</p>
+<p class="last">Peatamiseks vajuta samas terminalis korraga klahve <strong>Ctrl + C</strong>.</p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Kui robot sõitis otse, siis jätka, kui ei sõitnud, siis mõtle, mis võis minna valesti ja vajadusel küsi abi juhendajalt.</li>
+</ol>
+</div>
+<div class="section" id="programmi-kaitamine-robotil">
+<h2>Programmi käitamine robotil<a class="headerlink" href="#programmi-kaitamine-robotil" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<p>Kui simulaatoris sõidab robot nagu soovitud, on aeg proovida sõitmist päris roboti peal.</p>
+<ol class="arabic simple">
+<li>Sulge Gazebo, selleks leia terminal, kust Gazebo käivitasid ja vajuta <strong>CTRL + C</strong></li>
+<li>Kasutades sama terminali, loo ssh-ühendus robotisse.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Uues terminalis, mis on ühenduses robotiga sisesta:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_bare.launch
+</pre></div>
+</div>
+<p>See paneb käima ROSi roboti draiveri sõlme, mis kontrollib rataste kiirusi vastavalt meie saadetud sõnumitele.</p>
+<p>Kuna nüüd on ROSis peremeheks (<em>ROS Master</em>) robot, siis on vaja sellest kuidagi sülearvuti ROS sõlmedele teada anda. Selleks sisesta sülearvutiga ühenduses olevas terminalis käsk kujul:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://192.168.200.X:11311
+</pre></div>
+</div>
+<p>kus <code class="code docutils literal notranslate"><span class="pre">X</span></code> asenda oma roboti numbriga.</p>
+<ol class="arabic simple" start="3">
+<li>Seejärel käivita seal oma muudatustega programm täpselt nii nagu simulatsiooni puhul.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>rosrun robotont_koolitus move.py
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Märkus</p>
+<p class="last">Peatamiseks vajuta samas terminalis korraga klahve <strong>Ctrl + C</strong>.</p>
+</div>
+<p>Nüüd, kui tutvus on tehtud, proovi lahendada järgmised väljakutsed. <strong>Iga ülesande järel kirjuta üles kasutatud x, y ja z väärtused</strong>.</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>Pane robot sõitma tagasi.</li>
+<li>Pane robot sõitma vasakule/paremale.</li>
+<li>Pane robot pöörama vasakule/paremale.</li>
+<li>Pane robot sõitma 45 kraadise nurga all.</li>
+<li>Pane robot kaares sõitma.</li>
+<li>Pane robot ringis sõitma.</li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="loops.html" class="btn btn-neutral float-right" title="For- ja while tsüklid roboti juhtimisel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ROS_intro.html" class="btn btn-neutral float-left" title="ROS sissejuhatus" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Litsents CC BY-ND-NC, Madis Kaspar Nigol, Veiko Vunder, Renno Raudmäe, Karl Kruusamäe
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

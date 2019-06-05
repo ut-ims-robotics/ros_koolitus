@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="et" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="et" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Kaugteel robotisse sisenemine (ssh) &mdash; ROS Koolitus 0.1 dokumentatsioon</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script type="text/javascript" src="../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/hacks.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Otsing" href="../search.html" />
+    <link rel="next" title="Roboti ROS juhtprogrammi käivitamine" href="roboti_draiveri_kaivitamine.html" />
+    <link rel="prev" title="Linux: Programmide käivitamine" href="linux_programmide_kaivitamine.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ROS Koolitus
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">1. Päev</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="linux_ylevaade.html">Linux: Ubuntu 16.04 sissejuhatus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_kasurida.html">Linux: terminal ja käsurida</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_tarkvara_paigaldamine.html">Linux: Uue tarkvara paigaldamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_programmide_kaivitamine.html">Linux: Programmide käivitamine</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Kaugteel robotisse sisenemine (ssh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roboti_draiveri_kaivitamine.html">Roboti ROS juhtprogrammi käivitamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roboti_klaviatuurilt_juhtimine.html">Roboti juhtimine klaviatuuriga</a></li>
+</ul>
+<p class="caption"><span class="caption-text">2. Päev</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../day2/ROS_intro.html">ROS sissejuhatus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2/move.html">Programmeerime ROS roboti sõitma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2/loops.html"><em>For</em>- ja <em>while</em> tsüklid roboti juhtimisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2/functions.html">Funktsioonid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2/sensors.html">Roboti andurite info kuvamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2/AR_markerid.html">AR markerid</a></li>
+</ul>
+<p class="caption"><span class="caption-text">3. Päev</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../day3/2D_mapping.html">2d kaardistamine, automaatne navigeerimine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day3/3D_mapping.html">Praktikum 6 - 3D kaardistamine</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ROS Koolitus</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Kaugteel robotisse sisenemine (ssh)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/day1/ssh_robotisse.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kaugteel-robotisse-sisenemine-ssh">
+<h1>Kaugteel robotisse sisenemine (ssh)<a class="headerlink" href="#kaugteel-robotisse-sisenemine-ssh" title="Püsiviit sellele pealkirjale">¶</a></h1>
+<ol class="arabic">
+<li><p class="first">Ava Linuxi terminali aken.</p>
+</li>
+<li><p class="first">Sisesta käsk kujul <code class="code docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">kasutaja&#64;clearbot-X</span></code>, kus X asenda oma roboti numbriga. Näiteks järgnev käsk ühendub kasutajana <code class="code docutils literal notranslate"><span class="pre">kasutaja</span></code> robotisse nimega <code class="code docutils literal notranslate"><span class="pre">clearbot-1</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">ssh</span> <span class="n">kasutaja</span><span class="nd">@clearbot</span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/image30.png"><img alt="../_images/image30.png" src="../_images/image30.png" style="width: 508.9px; height: 305.2px;" /></a>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Märkus</p>
+<p class="last">Kui küsitakse yes/no variante, sisesta „yes” ning vajuta Enter.</p>
+</div>
+</li>
+<li><p class="first">Järgmisena küsitakse kasutaja <code class="code docutils literal notranslate"><span class="pre">kasutaja</span></code> parooli robotis.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Nõuanne</p>
+<p class="last">NB! Linuxi terminali aknas ei ole parooli trükkimist näha. Seega, ära ehmu, kui sisestamisel tärne või mumme ei ilmu.  Lihtsalt sisesta parool ja vajuta Enter.</p>
+</div>
+<p>Ssh programm lubab vale parooli korral uuesti proovida kuni kolm korda ja seejärel lõpetab töö. Kui tegid parooli sisestamisel vea, siis kuvatakse järgnev teade:</p>
+<blockquote>
+<div><div class="figure">
+<a class="reference internal image-reference" href="../_images/image31.png"><img alt="../_images/image31.png" src="../_images/image31.png" style="width: 343.7px; height: 136.5px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Kui parool oli õige, siis ilmub järgmine tervitus ning oled saanud ligipääsu oma robotile:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/image32.png"><img alt="../_images/image32.png" src="../_images/image32.png" style="width: 499.1px; height: 291.2px;" /></a>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Märkus</p>
+<p class="last">Nüüdsest on see terminali aken ühenduses robotiga. Kõik klahvivajutused, mis siin aknas tehakse, saadetakse edasi robotisse. Kuigi terminaliaken ise on avatud sülearvutis, siis sisestatud käsud käivitatakse robotis.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Nõuanne</p>
+<p class="last">Kui arvutis on avatud mitmeid terminale, siis võib tekkida segadus, mis aken kuhu on ühdatud. Seega tasub hoolega jälgida käsurea alguses arvuti nime. Antud näites muutus <code class="code docutils literal notranslate"><span class="pre">kasutaja&#64;laptop-1</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">kasutaja&#64;clearbot-1</span></code>.</p>
+</div>
+</li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="roboti_draiveri_kaivitamine.html" class="btn btn-neutral float-right" title="Roboti ROS juhtprogrammi käivitamine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="linux_programmide_kaivitamine.html" class="btn btn-neutral float-left" title="Linux: Programmide käivitamine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Litsents CC BY-ND-NC, Madis Kaspar Nigol, Veiko Vunder, Renno Raudmäe, Karl Kruusamäe
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
