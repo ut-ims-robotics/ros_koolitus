@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2d kaardistamine, automaatne navigeerimine &mdash; ROS Koolitus 0.1 dokumentatsioon</title>
+  <title>2D kaardistamine, automaatne navigeerimine &mdash; ROS Koolitus 0.1 dokumentatsioon</title>
   
 
   
@@ -105,10 +105,10 @@
 </ul>
 <p class="caption"><span class="caption-text">3. Päev</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2d kaardistamine, automaatne navigeerimine</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2D kaardistamine, automaatne navigeerimine</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#mis-on-kaardistamine">Mis on kaardistamine?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#laseri-visualiseerimine-rvizis">Laseri visualiseerimine RVizis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#proovime-ruumi-kaardistada">Proovime ruumi kaardistada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#laseri-andmete-visualiseerimine-rvizis">Laseri andmete visualiseerimine RVizis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ruumi-kaardistamine">Ruumi kaardistamine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#autonoomne-liikumine">Autonoomne liikumine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#proovime-ise">Proovime ise</a></li>
 </ul>
@@ -159,7 +159,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>2d kaardistamine, automaatne navigeerimine</li>
+      <li>2D kaardistamine, automaatne navigeerimine</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,39 +179,41 @@
            <div itemprop="articleBody">
             
   <div class="section" id="d-kaardistamine-automaatne-navigeerimine">
-<h1>2d kaardistamine, automaatne navigeerimine<a class="headerlink" href="#d-kaardistamine-automaatne-navigeerimine" title="Püsiviit sellele pealkirjale">¶</a></h1>
+<h1>2D kaardistamine, automaatne navigeerimine<a class="headerlink" href="#d-kaardistamine-automaatne-navigeerimine" title="Püsiviit sellele pealkirjale">¶</a></h1>
 <div class="section" id="mis-on-kaardistamine">
 <h2>Mis on kaardistamine?<a class="headerlink" href="#mis-on-kaardistamine" title="Püsiviit sellele pealkirjale">¶</a></h2>
 <p>Siiani oleme kasutanud vaid andmeid, mida me saame reaalajas.
 Aga kas poleks mitte tore, kui robotil oleks mälu?
-Kui sõidame mõnest takistusest mööda, siis on hea, kui jätame meelde, kus see takistus oli, et oskaks seda edaspidi vältida.
+Kui sõidame mõnest takistusest mööda, siis on see info kasulik meelde jätta ning edaspidisel teekonna planeerimisel arvesse võtta.
 Selleks ongi kaardistamine.
-Käesolevas praktikumis kasutame kaugusanduri laserskanni, et luua ja jätta ka meelde kahemõõtmeline kaart roboti ümbrusest.
+Käesolevas praktikumis kasutame 3D kaameraga moodustatud 2D laserskanni, et luua ja jätta ka meelde kahemõõtmeline kaart roboti ümbrusest.
 Kaardi loomiseks ja sellel roboti asukoha määramiseks kasutame Google Cartographer on tarkvara, mida muuhulgas kasutavad ka Google’i isesõitvad autod.</p>
 </div>
-<div class="section" id="laseri-visualiseerimine-rvizis">
-<h2>Laseri visualiseerimine RVizis<a class="headerlink" href="#laseri-visualiseerimine-rvizis" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<div class="section" id="laseri-andmete-visualiseerimine-rvizis">
+<h2>Laseri andmete visualiseerimine RVizis<a class="headerlink" href="#laseri-andmete-visualiseerimine-rvizis" title="Püsiviit sellele pealkirjale">¶</a></h2>
 <p>RViz on ROSis põhiline programm, mida kasutada erinevate andmete graafiliseks visualiseerimiseks.
-Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks ning hiljem juba valminud kaarti nägemiseks.</p>
+Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks ning hiljem juba valminud kaardi nägemiseks.</p>
 <ol class="arabic">
-<li><p class="first">Ava uus terminal</p>
+<li><p class="first">Ava uus terminal ja loo <em>ssh</em>-ühendus robotisse</p>
 </li>
-<li><p class="first">Loo <em>ssh</em>-ühendus robotisse</p>
+<li><p class="first">Pane robotis käima vajalik ROS tarkvara</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_with_laserscan.launch
+</pre></div>
+</div>
 </li>
-<li><p class="first">Trüki terminali</p>
-<p><strong>roslaunch robotont_teleop teleop_with_laserscan.launch</strong></p>
-<p>See paneb käima roboti poolel vajaoleva tarkvara</p>
+<li><p class="first">Ava teine terminal ning käivita klaviatuurilt juhtimise programm</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_pc_side.launch
+</pre></div>
+</div>
 </li>
-<li><p class="first">Ava uus terminal ning trüki sinna</p>
-<p><strong>roslaunch robotont_teleop teleop_pc_side.launch</strong></p>
-<p>Selles terminalis saad robotit juhtida.</p>
+<li><p class="first">Ava kolmas terminal ning käivita laserskanni visualiseerimine RVizis</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_pc_side.launch
+</pre></div>
+</div>
 </li>
-<li><p class="first">Ava veel üks terminal ning trüki sinna</p>
-<p><strong>roslaunch robotont_description display_laserscan.launch</strong></p>
+<li><p class="first">Nüüd säti enda aknad nii, et näeksid korraga RVizi pilti ning terminali klaviatuurilt juhtimiseks.</p>
 </li>
-<li><p class="first">Nüüd säti enda aknad nii, et näeksid korraga RVizi pilti ning seda terminali, kus klaviatuuriga juhtimine käib.</p>
-</li>
-<li><p class="first">Sõida ringi ja vaata, milline on pilt RVizis.</p>
+<li><p class="first">Veendu, et oleks aktiivne aken, sõida ringi ja vaata, milline on pilt RVizis.</p>
 </li>
 <li><p class="first">Vaadates ainult RVizi, sõida läbi ruumi keskel oleva takistusraja.</p>
 </li>
@@ -219,8 +221,8 @@ Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks
 </li>
 </ol>
 </div>
-<div class="section" id="proovime-ruumi-kaardistada">
-<h2>Proovime ruumi kaardistada<a class="headerlink" href="#proovime-ruumi-kaardistada" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<div class="section" id="ruumi-kaardistamine">
+<h2>Ruumi kaardistamine<a class="headerlink" href="#ruumi-kaardistamine" title="Püsiviit sellele pealkirjale">¶</a></h2>
 <p>Nüüd kui oleme näinud, mida robot näeb, on aeg kaardistama hakata.</p>
 <ol class="arabic">
 <li><p class="first">Ava terminal, loo ssh-ühendus robotisse ning trüki sinna</p>

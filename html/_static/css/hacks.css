@@ -9,6 +9,19 @@
   background: #edf0f2 !important;
 }
 
+.rst-content code {
+  font-size: 90%;
+}
+
+
+
+.rst-content div[class^='highlight'] pre {
+  font-size: 90%; 
+}
+
+p {
+  font-size: 120%; 
+}
 
 
 
@@ -164,22 +177,24 @@ div.supportBadges a:hover {
 
 /* Details elements in the sidebar */
 
+/*
 a.reference {
     border-bottom: none;
     text-decoration: none;
 }
 
 ul.details {
-    font-size: 80%;
+    font-size: 100%;
 }
 
 ul.details li p {
-    font-size: 85%;
+    font-size: 75%;
 }
 
 ul.externallinks {
-    font-size: 85%;
+    font-size: 75%;
 }
+*/
 
 
 /* Pour le drapeau de langue */
@@ -193,12 +208,12 @@ img.languageswitch {
 
 div.sphinxsidebar {
     overflow: hidden !important;
-    font-size: 120%;
     word-wrap: break-word;
     width: 300px;
     max-width: 300px;
 }
 
+/*
 div.sphinxsidebar h3 {
     font-size: 125%;
 }
@@ -211,7 +226,7 @@ div.sphinxsidebar a {
     font-size: 85%;
 }
 
-
+*/
 /* Image style for scrollUp jQuery plugin */
 
 #scrollUpLeft {
@@ -231,11 +246,12 @@ div.sphinxsidebar a {
 }
 
 
+
 /* responsive for font-size. */
 
 @media (max-width: 875px) {
     body {
-        font-size: 105%;
+        font-size: 100%;
         /* Increase font size for responsive theme */
     }
 }
@@ -249,7 +265,7 @@ div.sphinxsidebar a {
 
 @media (min-width: 1481px) {
     body {
-        font-size: 115%;
+        font-size: 110%;
         /* Increase even more font size for big screens */
     }
 }

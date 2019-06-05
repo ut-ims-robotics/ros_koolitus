@@ -1,45 +1,58 @@
-2d kaardistamine, automaatne navigeerimine
+==========================================
+2D kaardistamine, automaatne navigeerimine
 ==========================================
 
 Mis on kaardistamine?
 -----------------------
 
-Siiani oleme kasutanud vaid andmeid, mida me saame reaalajas. 
+Siiani oleme kasutanud vaid andmeid, mida me saame reaalajas.
 Aga kas poleks mitte tore, kui robotil oleks mälu? 
-Kui sõidame mõnest takistusest mööda, siis on hea, kui jätame meelde, kus see takistus oli, et oskaks seda edaspidi vältida.
+Kui sõidame mõnest takistusest mööda, siis on see info kasulik meelde jätta ning edaspidisel teekonna planeerimisel arvesse võtta.
 Selleks ongi kaardistamine. 
-Käesolevas praktikumis kasutame kaugusanduri laserskanni, et luua ja jätta ka meelde kahemõõtmeline kaart roboti ümbrusest. 
+Käesolevas praktikumis kasutame 3D kaameraga moodustatud 2D laserskanni, et luua ja jätta ka meelde kahemõõtmeline kaart roboti ümbrusest.
 Kaardi loomiseks ja sellel roboti asukoha määramiseks kasutame Google Cartographer on tarkvara, mida muuhulgas kasutavad ka Google’i isesõitvad autod.
 
-Laseri visualiseerimine RVizis
----------------------------------
+Laseri andmete visualiseerimine RVizis
+--------------------------------------
 
 RViz on ROSis põhiline programm, mida kasutada erinevate andmete graafiliseks visualiseerimiseks. 
-Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks ning hiljem juba valminud kaarti nägemiseks.
+Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks ning hiljem juba valminud kaardi nägemiseks.
 
-1.  Ava uus terminal
-2.  Loo *ssh*-ühendus robotisse
-3.  Trüki terminali
+1.  Ava uus terminal ja loo *ssh*-ühendus robotisse
 
-    **roslaunch robotont_teleop teleop_with_laserscan.launch**
+2.  Pane robotis käima vajalik ROS tarkvara
 
-    See paneb käima roboti poolel vajaoleva tarkvara
-4.  Ava uus terminal ning trüki sinna
+    .. code-block:: bash
+
+       roslaunch robotont_teleop teleop_with_laserscan.launch
+
+    ..
+
+3.  Ava teine terminal ning käivita klaviatuurilt juhtimise programm
+
+    .. code-block:: bash
+
+       roslaunch robotont_teleop teleop_pc_side.launch
+
+    ..
+
+4.  Ava kolmas terminal ning käivita laserskanni visualiseerimine RVizis
     
-    **roslaunch robotont_teleop teleop_pc_side.launch**
+    .. code-block:: bash
+
+       roslaunch robotont_teleop teleop_pc_side.launch
+
+    ..
+
+5.  Nüüd säti enda aknad nii, et näeksid korraga RVizi pilti ning terminali klaviatuurilt juhtimiseks.
+
+6.  Veendu, et oleks aktiivne aken, sõida ringi ja vaata, milline on pilt RVizis.
     
-    Selles terminalis saad robotit juhtida.
+7.  Vaadates ainult RVizi, sõida läbi ruumi keskel oleva takistusraja.
 
-5.  Ava veel üks terminal ning trüki sinna
-    
-    **roslaunch robotont_description display_laserscan.launch**
+8.  Kui oled valmis jätkma, sulge kõik terminaliaknad.
 
-6.  Nüüd säti enda aknad nii, et näeksid korraga RVizi pilti ning seda terminali, kus klaviatuuriga juhtimine käib.
-7.  Sõida ringi ja vaata, milline on pilt RVizis.
-8.  Vaadates ainult RVizi, sõida läbi ruumi keskel oleva takistusraja.
-9.  Kui oled valmis jätkma, sulge kõik terminaliaknad.
-
-Proovime ruumi kaardistada
+Ruumi kaardistamine
 --------------------------------
 
 Nüüd kui oleme näinud, mida robot näeb, on aeg kaardistama hakata.
