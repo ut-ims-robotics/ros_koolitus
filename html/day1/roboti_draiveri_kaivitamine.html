@@ -89,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="linux_ylevaade.html">Linux: Ubuntu 16.04 sissejuhatus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_kasurida.html">Linux: terminal ja käsurida</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_tarkvara_paigaldamine.html">Linux: Uue tarkvara paigaldamine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linux_programmide_kaivitamine.html">Linux: Programmide käivitamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_programmide_kaivitamine.html">Linux: Programmide käivitamine käsurealt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_robotisse.html">Kaugteel robotisse sisenemine (ssh)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Roboti ROS juhtprogrammi käivitamine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="roboti_klaviatuurilt_juhtimine.html">Roboti juhtimine klaviatuuriga</a></li>
@@ -106,7 +106,7 @@
 <p class="caption"><span class="caption-text">3. Päev</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../day3/2D_mapping.html">2D kaardistamine, automaatne navigeerimine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../day3/3D_mapping.html">Praktikum 6 - 3D kaardistamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day3/3D_mapping.html">3D kaardistamine</a></li>
 </ul>
 
             
@@ -173,15 +173,17 @@
             
   <div class="section" id="roboti-ros-juhtprogrammi-kaivitamine">
 <h1>Roboti ROS juhtprogrammi käivitamine<a class="headerlink" href="#roboti-ros-juhtprogrammi-kaivitamine" title="Püsiviit sellele pealkirjale">¶</a></h1>
-<p>Alustuseks käivitame arvuti peal ROS-i programmi, mis korraldab arvuti ja ülejäänud roboti elektroonika vahelist suhtlust.
-Selleks kirjutame samas (<a class="reference external" href="mailto:kasutaja&#37;&#52;&#48;clearbot-*">kasutaja<span>&#64;</span>clearbot-*</a>) terminali aknas:</p>
-<p><strong>roslaunch robotont_teleop teleop_bare.launch</strong></p>
+<p>Alustuseks käivitame roboti pardaarvutis ROS-i programmi, mis suhtleb roboti elektroonikaga. See programm
+Selleks kirjutame samas (<code class="code docutils literal notranslate"><span class="pre">kasutaja&#64;clearbot-X</span></code>) robotiga ühendatud terminali aknasse:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_bare.launch
+</pre></div>
+</div>
 <blockquote>
 <div><div class="figure">
 <a class="reference internal image-reference" href="../_images/image33.png"><img alt="../_images/image33.png" src="../_images/image33.png" style="width: 503.3px; height: 294.7px;" /></a>
 </div>
 </div></blockquote>
-<p><strong>Nüüd sinu robot töötab ning ootab juhiseid.</strong></p>
+<p><strong>Nüüd sinu robot töötab ning ootab juhiseid!</strong></p>
 </div>
 
 

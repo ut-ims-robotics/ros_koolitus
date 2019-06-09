@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Linux: Programmide käivitamine &mdash; ROS Koolitus 0.1 dokumentatsioon</title>
+  <title>Linux: Programmide käivitamine käsurealt &mdash; ROS Koolitus 0.1 dokumentatsioon</title>
   
 
   
@@ -89,9 +89,11 @@
 <li class="toctree-l1"><a class="reference internal" href="linux_ylevaade.html">Linux: Ubuntu 16.04 sissejuhatus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_kasurida.html">Linux: terminal ja käsurida</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_tarkvara_paigaldamine.html">Linux: Uue tarkvara paigaldamine</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Linux: Programmide käivitamine</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linux: Programmide käivitamine käsurealt</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#susteemi-paigaldatud-programmi-kaivitamine">Süsteemi paigaldatud programmi käivitamine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ulesanne-1">Ülesanne 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ulesanne-2">Ülesanne 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ulesanne-3">Ülesanne 3</a></li>
 </ul>
 </li>
 </ul>
@@ -112,7 +114,7 @@
 <p class="caption"><span class="caption-text">3. Päev</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../day3/2D_mapping.html">2D kaardistamine, automaatne navigeerimine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../day3/3D_mapping.html">Praktikum 6 - 3D kaardistamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day3/3D_mapping.html">3D kaardistamine</a></li>
 </ul>
 
             
@@ -158,7 +160,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Linux: Programmide käivitamine</li>
+      <li>Linux: Programmide käivitamine käsurealt</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,12 +179,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="linux-programmide-kaivitamine">
-<h1>Linux: Programmide käivitamine<a class="headerlink" href="#linux-programmide-kaivitamine" title="Püsiviit sellele pealkirjale">¶</a></h1>
+  <div class="section" id="linux-programmide-kaivitamine-kasurealt">
+<h1>Linux: Programmide käivitamine käsurealt<a class="headerlink" href="#linux-programmide-kaivitamine-kasurealt" title="Püsiviit sellele pealkirjale">¶</a></h1>
 <div class="section" id="susteemi-paigaldatud-programmi-kaivitamine">
 <h2>Süsteemi paigaldatud programmi käivitamine<a class="headerlink" href="#susteemi-paigaldatud-programmi-kaivitamine" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Kui oled paigaldanud programmi APT kaudu, siis kopeeritakse see reeglina süsteemi kaustadesse <code class="code docutils literal notranslate"><span class="pre">/usr/...</span></code> või <code class="code docutils literal notranslate"><span class="pre">/usr/local/...</span></code>.
-Süsteemi kaustadesse paigaldatud programmide käivitamiseks on lihtsalt vaja kirjutada programmi nimi terminali ja vajutada Enter.</p>
+<p>Selleks, et Linuxis programmi käivitada, on vaja kirjutada programmi nimi terminali ja vajutada Enter — täpselt samamoodi nagu kasutasid programme <code class="code docutils literal notranslate"><span class="pre">ls</span></code> või <code class="code docutils literal notranslate"><span class="pre">cd</span></code>.</p>
+<p>Programmi nime sisestamisel hakkab Linux seda oma süsteemist otsima. Kui programm leitakse, siis see käivitatakse. Vastasel juhul antakse teada, et käsku ei leitud.</p>
+<p>Kui soovid näha, missugustest kaustadest programmi otsitakse, siis sisesta:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="nb">echo</span> $PATH
+</pre></div>
+</div>
+<p>See käsk kuvab väljundisse muutuja <code class="code docutils literal notranslate"><span class="pre">PATH</span></code> sisu, kus hoitakse kooloniga eraldatud nimekirja kaustadest.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Nõuanne</p>
+<p class="last">Kui nimekiri tundub kirju ja soovid olla tõeline Linuxi häkker, siis suuna eelneva käsu väljund edasi <code class="code docutils literal notranslate"><span class="pre">sed</span></code> programmi, et asendada koolonid reavahetustega: <code class="code docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$PATH</span> <span class="pre">|</span> <span class="pre">sed</span> <span class="pre">s/:/\\n/g</span></code></p>
+</div>
+<p>APT kaudu paigaldatud programmid kopeeritakse tavaliselt süsteemi kaustadesse <code class="code docutils literal notranslate"><span class="pre">/usr/bin</span></code> või <code class="code docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>. Kuna need kaustad on eelpool kuvatud nimekirjas, siis piisabki lihtsalt programmi nime sisestamisest.</p>
+<p>Et leida, kuhu käivitatav programm failisüsteemis asub, on käsk <code class="code docutils literal notranslate"><span class="pre">whereis</span></code>. Näiteks:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>whereis ls
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Nõuanne</p>
+<p class="last">Kui programm asukoht ei ole <code class="code docutils literal notranslate"><span class="pre">PATH</span></code> muutujasse lisatud, siis saab endiselt programmi käivitada, kuid tuleb sisestada täielik tee programmini. Näiteks <code class="code docutils literal notranslate"><span class="pre">/bin/ls</span></code> või <code class="code docutils literal notranslate"><span class="pre">/home/kasutaja/programm_kodukaustas</span></code></p>
+</div>
 <div class="section" id="ulesanne-1">
 <h3>Ülesanne 1<a class="headerlink" href="#ulesanne-1" title="Püsiviit sellele pealkirjale">¶</a></h3>
 <p>Käivita eelnevas ülesandes paigaldatud programm <code class="code docutils literal notranslate"><span class="pre">bastet</span></code>.</p>
@@ -190,6 +210,14 @@ Süsteemi kaustadesse paigaldatud programmide käivitamiseks on lihtsalt vaja ki
 <p class="first admonition-title">Märkus</p>
 <p class="last">Programmide peatamiseks on Linuxis universaalne klahvikombinatsioon CTRL+C.</p>
 </div>
+</div>
+<div class="section" id="ulesanne-2">
+<h3>Ülesanne 2<a class="headerlink" href="#ulesanne-2" title="Püsiviit sellele pealkirjale">¶</a></h3>
+<p>Kuva kausta <code class="code docutils literal notranslate"><span class="pre">/bin</span></code> sisu. Kas seal asuvad failid on tuttavad?</p>
+</div>
+<div class="section" id="ulesanne-3">
+<h3>Ülesanne 3<a class="headerlink" href="#ulesanne-3" title="Püsiviit sellele pealkirjale">¶</a></h3>
+<p>Edaspidi hakkame kasutama kasutama ROS-i programme <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> ja <code class="code docutils literal notranslate"><span class="pre">roslaunch</span></code>. Uuri välja, mis kaustas need failisüsteemis asuvad?</p>
 </div>
 </div>
 </div>

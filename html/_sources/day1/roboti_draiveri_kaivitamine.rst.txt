@@ -1,14 +1,18 @@
 Roboti ROS juhtprogrammi käivitamine
 ====================================
 
-Alustuseks käivitame arvuti peal ROS-i programmi, mis korraldab arvuti ja ülejäänud roboti elektroonika vahelist suhtlust.
-Selleks kirjutame samas (kasutaja@clearbot-\*) terminali aknas:
+Alustuseks käivitame roboti pardaarvutis ROS-i programmi, mis suhtleb roboti elektroonikaga. See programm 
+Selleks kirjutame samas (:code:`kasutaja@clearbot-X`) robotiga ühendatud terminali aknasse:
 
-**roslaunch robotont_teleop teleop_bare.launch**
+.. code-block:: bash
+
+   roslaunch robotont_teleop teleop_bare.launch
+
+..
 
     .. figure:: ../images/lab01/image33.png
         :scale: 70 %
 
         ..
 
-**Nüüd sinu robot töötab ning ootab juhiseid.**
+**Nüüd sinu robot töötab ning ootab juhiseid!**

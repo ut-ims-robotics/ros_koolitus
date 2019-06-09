@@ -89,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="linux_ylevaade.html">Linux: Ubuntu 16.04 sissejuhatus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_kasurida.html">Linux: terminal ja käsurida</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_tarkvara_paigaldamine.html">Linux: Uue tarkvara paigaldamine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linux_programmide_kaivitamine.html">Linux: Programmide käivitamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_programmide_kaivitamine.html">Linux: Programmide käivitamine käsurealt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_robotisse.html">Kaugteel robotisse sisenemine (ssh)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="roboti_draiveri_kaivitamine.html">Roboti ROS juhtprogrammi käivitamine</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Roboti juhtimine klaviatuuriga</a></li>
@@ -106,7 +106,7 @@
 <p class="caption"><span class="caption-text">3. Päev</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../day3/2D_mapping.html">2D kaardistamine, automaatne navigeerimine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../day3/3D_mapping.html">Praktikum 6 - 3D kaardistamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day3/3D_mapping.html">3D kaardistamine</a></li>
 </ul>
 
             
@@ -173,31 +173,44 @@
             
   <div class="section" id="roboti-juhtimine-klaviatuuriga">
 <h1>Roboti juhtimine klaviatuuriga<a class="headerlink" href="#roboti-juhtimine-klaviatuuriga" title="Püsiviit sellele pealkirjale">¶</a></h1>
-<p>Korrektselt vormistatud liikumisjuhiste andmiseks kasutame programmi, mis võimaldab meil robotit arvutiklaviatuuri abil juhtida.</p>
+<p>ROS-is on roboti kiiruse seadmiseks vaja kuulutada kindlat tüüpi liikumisjuhistega sõnumeid, mida robotis töötav programm aru saab. Siin kasutame liikumisjuhiste kuulutamiseks programmi, mis erinevate klahvivajutuste korral kuulutab ROS keskkonnas erinevaid liikumisjuhiseid. Nii saamegi robotit klaviatuuri abil juhtida.</p>
 <ol class="arabic">
-<li><p class="first">Avame uue terminali akna.</p>
-<p>Nüüd on sul sülearvutis lahti vähemalt kaks terminaliakent, millest üks on otseühenduses robotiga. Kas saad aru, kumb on kumb?</p>
+<li><p class="first">Avame lisaks robotiga ühenduses olevale aknale veel ühe terminali.</p>
 </li>
-<li><p class="first">Käivitame äsja avatud terminaliaknas, mis käivitab programme sülearvutis, ROS sõlme, mis jälgib terminali aknas klahvivajutusi.
-See sõlm saadab klahvivajutused edasi robotile arusaadaval kujul. Sõlme käivitamiseks sisesta terminali järgmine käsk ja vajuta Enter klahvi:</p>
-<p><strong>roslaunch robotont_teleop teleop_pc_side.launch</strong></p>
+<li><p class="first">Seadistame roboti, mida soovime juhtida, selle akna ROS peremeheks:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>seadista_robot
+</pre></div>
+</div>
+</li>
+<li><p class="first">Programm küsib roboti numbrit ja teeb selle põhjal vajalikud sedaistused. Sisesta oma roboti number ja vajute Enter.</p>
+</li>
+<li><p class="first">Nüüd saame käivitada ROS sõlme, mis jälgib terminali aknas tehtud klahvivajutusi ja on ühendatud robotiga:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_pc_side.launch
+</pre></div>
+</div>
 </li>
 <li><p class="first">Tulemus peaks olema selline:</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../_images/image34.png"><img alt="../_images/image34.png" src="../_images/image34.png" style="width: 498.4px; height: 303.8px;" /></a>
 </div>
-<p><span class="red">NB! Sellest hetkest saab klahvivajutustega panna robotit eri suundades sõitma. Selleks, et klahvivajutused mõjuks, peab see terminaliaken olema aktiivne.
-ROBOTI PEATAMISEKS VAJUTA „k“ KLAHVI!
-Kui kaotad roboti üle kontrolli, siis tõsta lihtsalt robot õhku ja kutsu juhendaja!</span></p>
+<div class="admonition warning">
+<p class="first admonition-title">Hoiatus</p>
+<p>NB! Sellest hetkest saab klahvivajutustega panna robotit eri suundades sõitma. Selleks, et klahvivajutused mõjuks, peab see terminaliaken olema aktiivne.</p>
+<p>ROBOTI PEATAMISEKS VAJUTA „k“ KLAHVI!</p>
+<p class="last">Kui kaotad roboti üle kontrolli, vajuta punast E-STOP nuppu või tõsta lihtsalt robot õhku ja kutsu juhendaja!</p>
+</div>
 </li>
 </ol>
 <p><strong>Sõitmiseks:</strong></p>
 <blockquote>
 <div><div class="figure">
-<a class="reference internal image-reference" href="../_images/image35.png"><img alt="../_images/image35.png" src="../_images/image35.png" style="width: 443.1px; height: 142.1px;" /></a>
+<a class="reference internal image-reference" href="../_images/image35.png"><img alt="../_images/image35.png" src="../_images/image35.png" style="width: 759.6px; height: 243.6px;" /></a>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Nõuanne</p>
+<p class="last">Programmi saab peatada klahvikombinatsiooniga Ctrl+C.</p>
 </div>
 </div></blockquote>
-<p>Selleks, et programme Linuxi terminalis kinni panna, on klahvikombinatsioon Ctrl+C.</p>
 </div>
 
 

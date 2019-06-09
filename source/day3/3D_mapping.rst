@@ -1,11 +1,10 @@
-Praktikum 6 - 3D kaardistamine
-====================================
-
 3D kaardistamine
-------------------
+================
 
-Kui eelnevalt oleme vaadanud vaid 2D andmeid, laserskanni ja kaugusi ning nende abil robotit liigutanud, 
-siis nüüd hakkame kasutama 3D punktipilve, mille jäädvustamiseks meie kaamera võimeline on. 
+Sissejuhatus
+------------
+
+Kui eelnevalt oleme vaadanud vaid 2D andmeid, laserskanni ja kaugusi ning nende abil robotit liigutanud, siis nüüd hakkame kasutama 3D punktipilve, mille jäädvustamiseks meie kaamera võimeline on. 
 
 Mis on punktipilv?
 -------------------
