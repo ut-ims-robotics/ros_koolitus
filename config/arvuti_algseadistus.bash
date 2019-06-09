@@ -7,6 +7,8 @@ fi
 echo -ne "Sisesta USB pulga number [1-25] ja vajuta Enter: "
 read MY_ID
 
+# Clear existing network connections
+rm -f /etc/NetworkManager/system-connections/clearbot*
 
 if [ $MY_ID -le 12 ]
 then
@@ -20,10 +22,12 @@ fi
 INTERFACE=$(iw dev | awk '$1=="Interface"{print $2}')
 IP=192.168.200.$(($MY_ID + 100))
 
-HOSTS_FILE=/etc/hosts2
+HOSTS_FILE=/etc/hosts
 
 echo "127.0.0.1 localhost" > $HOSTS_FILE
 echo "127.0.1.1 laptop-$MY_ID" >> $HOSTS_FILE
+
+echo "laptop-$MY_ID" > /etc/hostname
 
 # The following lines are desirable for IPv6 capable hosts
 cat >> $HOSTS_FILE <<- EOM
