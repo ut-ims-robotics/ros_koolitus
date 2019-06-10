@@ -107,14 +107,15 @@ Programmi käitamine simulaatoris
 --------------------------------
 
 Tarkvara arendamisel tekib tihtipeale vigu, mis näiteks suurte tööstusrobotite puhul võivad põhjustada pöördumatut kahju nii robotile endale, ümbritsevatele objektidele kui ka roboti operaatorile. Selle vältimiseks on enne programmi käivitamist päris robotil alati kasulik seda põhjalikult testida simulaatoris. ROSi simulatsioonikeskkonnaks on Gazebo. Gazebo võimaldab luua virtuaalse maailma, paigutada sinna robot, ja simuleerida toimuvat.
-Gazebo käitamiseks ava uus terminali aken ning sisesta käsk:
+
+1. Gazebo käitamiseks ava uus terminali aken ning sisesta käsk:
 
 .. code-block:: bash
 
   roslaunch robotont_description gazebo.launch
 
 
-1.  Nüüd otsi uuesti üles eelmine terminal ja käivita seal oma muudatustega programm:
+2. Otsi uuesti üles eelmine terminal ja käivita seal oma muudatustega programm:
 
 .. code-block:: bash
 
@@ -122,13 +123,29 @@ Gazebo käitamiseks ava uus terminali aken ning sisesta käsk:
 
 .. note:: Peatamiseks vajuta samas terminalis korraga klahve **Ctrl + C**.
 
-2.  Kui robot sõitis otse, siis jätka, kui ei sõitnud, siis mõtle, mis võis minna valesti ja vajadusel küsi abi juhendajalt.
+3. Kui robot sõitis otse, siis jätka, kui ei sõitnud, siis mõtle, mis võis minna valesti ja vajadusel küsi abi juhendajalt.
 
 
-Programmi käitamine robotil
----------------------------
+Ülesanded
+---------
 
-Kui simulaatoris sõidab robot nagu soovitud, on aeg proovida sõitmist päris roboti peal. 
+Nüüd, kui tutvus on tehtud, proovi lahendada järgmised väljakutsed. **Iga ülesande järel kirjuta üles kasutatud x, y ja z väärtused**.
+
+    a.  Pane robot sõitma tagasi.
+    b.  Pane robot sõitma vasakule/paremale.
+    c.  Pane robot pöörama vasakule/paremale.
+    d.  Pane robot sõitma 45 kraadise nurga all.
+    e.  Pane robot kaares sõitma.
+    f.  Pane robot ringis sõitma.
+
+
+Vahetame simulaatori roboti vastu
+---------------------------------
+
+Kui simulaatoris sõidab robot nagu soovitud, on aeg proovida sõitmist päris roboti peal.
+Eelnevas näites töötas ROSi tuum sülearvutis. Selles näites kasutame ROS tuuma, mis käivitatakse robotis koos draiveriga. Nii saab ühendada arvuti ja roboti ühtsesse ROS süsteemi, mis võimaldab sõlmede omavahelist suhtlust hoolimata sellest, et sõlmed ise asuvad hoopis eri arvutite peal.
+
+Kõigepealt käivitame robotis draiveri sõlme, mis ühtlasi paneb käima ka ROS tuuma.
 
 1.  Sulge Gazebo, selleks leia terminal, kust Gazebo käivitasid ja vajuta **CTRL + C**
 
@@ -142,29 +159,26 @@ Kui simulaatoris sõidab robot nagu soovitud, on aeg proovida sõitmist päris r
 
 See paneb käima ROSi roboti draiveri sõlme, mis kontrollib rataste kiirusi vastavalt meie saadetud sõnumitele.
 
-Kuna nüüd on ROSis peremeheks (*ROS Master*) robot, siis on vaja sellest kuidagi sülearvuti ROS sõlmedele teada anda. Selleks sisesta sülearvutiga ühenduses olevas terminalis käsk kujul:
+Kuna nüüd soovime kasutada ROSi tuuma robotil, siis on vaja peremehe (*ROS Master*) muutumisest sülearvutile teada anda. Selleks sisesta sülearvutiga ühenduses olevas terminalis käsk:
 
 .. code-block:: bash
 
-    export ROS_MASTER_URI=http://192.168.200.X:11311
+    seadista_robot 
 
-kus :code:`X` asenda oma roboti numbriga.
+Sisesta roboti number ja vajuta Enter.
 
-3.  Seejärel käivita seal oma muudatustega programm täpselt nii nagu simulatsiooni puhul.
+.. tip:: See käsk teeb mõned muudatused ROS keskkonnaparameetrites. Kõik ROS tööriistad ja programmid, mis edaspidi selles terminali aknas kasutatakse on nüüd seadistatud võtma ühendust ROS tuumaga, mis asub robotil.
+
+3.  Nüüd tuleb välja ROS tõeline võimekus, sest oma muudetud :code:`move.py` programmi saad käivitada täpselt nii nagu simulatsiooni puhul.
 
 .. code-block:: bash
 
    rosrun robotont_koolitus move.py
 
-.. note:: Peatamiseks vajuta samas terminalis korraga klahve **Ctrl + C**.
+.. note:: Peatamiseks töötab endiselt klahvikombinatsioon **Ctrl + C**.
 
 
-Nüüd, kui tutvus on tehtud, proovi lahendada järgmised väljakutsed. **Iga ülesande järel kirjuta üles kasutatud x, y ja z väärtused**.
+Kopeerime juhtimisprogrammi sülearvutist robotisse
+--------------------------------------------------
 
-    a.  Pane robot sõitma tagasi.
-    b.  Pane robot sõitma vasakule/paremale.
-    c.  Pane robot pöörama vasakule/paremale.
-    d.  Pane robot sõitma 45 kraadise nurga all.
-    e.  Pane robot kaares sõitma.
-    f.  Pane robot ringis sõitma.
-
+.. warning::`TODO Teeme seda, sest mõnikord võib ühendus olla sülearvuti ja roboti vahel kehva.`

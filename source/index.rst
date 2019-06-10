@@ -28,14 +28,10 @@ Tere tulemast ROS koolitusele!
   :maxdepth: 1
   :caption: 2. Päev
 
-  day2/ROS_intro.rst
-
+  day2/sensors.rst
   day2/move.rst  
   day2/loops.rst  
   day2/functions.rst  
-
-  day2/sensors.rst
-
   day2/AR_markerid.rst
 
 .. toctree::
