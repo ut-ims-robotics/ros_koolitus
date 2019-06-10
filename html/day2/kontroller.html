@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Funktsioonid &mdash; ROS Koolitus 0.1 dokumentatsioon</title>
+  <title>Mis on kontroller? &mdash; ROS Koolitus 0.1 dokumentatsioon</title>
   
 
   
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Otsing" href="../search.html" />
-    <link rel="next" title="Mis on kontroller?" href="kontroller.html" />
-    <link rel="prev" title="For- ja while tsüklid roboti juhtimisel" href="loops.html" /> 
+    <link rel="next" title="AR markerid" href="AR_markerid.html" />
+    <link rel="prev" title="Funktsioonid" href="functions.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,12 +99,13 @@
 <li class="toctree-l1"><a class="reference internal" href="sensors.html">Roboti andurite info kuvamine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="move.html">Programmeerime ROS roboti sõitma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html"><em>For</em>- ja <em>while</em> tsüklid roboti juhtimisel</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Funktsioonid</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Funktsioonid</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mis on kontroller?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sissejuhatus">Sissejuhatus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ulesanne-funktsioonid">Ülesanne - funktsioonid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#proovime-asjadele-mitte-otsa-soita">Proovime asjadele mitte otsa sõita</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vaatame-kuhu-poole-peaks-soitma-kui-uhes-kohas-asi-ees-on">Vaatame, kuhu poole peaks sõitma kui ühes kohas asi ees on.</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="kontroller.html">Mis on kontroller?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AR_markerid.html">AR markerid</a></li>
 </ul>
 <p class="caption"><span class="caption-text">3. Päev</span></p>
@@ -156,13 +157,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Funktsioonid</li>
+      <li>Mis on kontroller?</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/day2/functions.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/day2/kontroller.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,55 +176,97 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="funktsioonid">
-<h1>Funktsioonid<a class="headerlink" href="#funktsioonid" title="Püsiviit sellele pealkirjale">¶</a></h1>
+  <div class="section" id="mis-on-kontroller">
+<h1>Mis on kontroller?<a class="headerlink" href="#mis-on-kontroller" title="Püsiviit sellele pealkirjale">¶</a></h1>
 <div class="section" id="sissejuhatus">
 <h2>Sissejuhatus<a class="headerlink" href="#sissejuhatus" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Selleks, et meil oleks kergem koodi kirjutada ja et me ei peaks koodi kopeerima, on olemas funktsioonid.
-Korduva koodi saame kirjutada funktsioonide sisse ning funktsiooni ühe reaga välja kutsuda.
-See parandab koodi loetavust ning teeb edasise programmeerimise lihtsamaks.
-Funktsioonide kohta saab lugeda <a class="reference external" href="https://progeopik.cs.ut.ee/04_funktsioonid.html">progeõpikust</a>.
-Järgneva ülesande eesmärk on kirjutada funktsioonid erimoodi sõitmiseks, et hiljem oleks lihtne ühe käsuga panna robot soovitud suunas sõitma.</p>
+<p>Eelmises lõigus tutvustati, mis on andurid.
+Nüüd on vaja ka teada, kuidas saame liigutada robotit sõltuvalt andurite näidust.
+Selleks on olemas kontrollerid.
+Kontrollerite ülesanne on sõltuvalt sisendist, näiteks andurite näidust,
+muuta väljundit, näiteks mootorite kiirust.
+Näiteks auto püsikiirusehoidja mõõdab kiirust ning annab selle järgi erinevalt gaasi.
+Kui kiirus on väiksem kui soovitud, annab kontroller gaasi
+ning kui kiirus on suurem kui soovitud, siis laseb gaasi lahti.
+Ka selles praktikumis kirjutame ise kontrolleri.</p>
+<p>Nüüd kui oleme aru saanud, kuidas need kaugused töötavad, on aeg neid kasutada.</p>
 </div>
-<div class="section" id="ulesanne-funktsioonid">
-<h2>Ülesanne - funktsioonid<a class="headerlink" href="#ulesanne-funktsioonid" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<div class="section" id="proovime-asjadele-mitte-otsa-soita">
+<h2>Proovime asjadele mitte otsa sõita<a class="headerlink" href="#proovime-asjadele-mitte-otsa-soita" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<p><strong>Võtame lahti faili, kuhu hakkame koodi kirjutama</strong></p>
 <ol class="arabic">
 <li><p class="first">Ava terminal ning loo ssh-ühendus robotisse.</p>
 </li>
-<li><p class="first">Ava <strong>nano</strong>’ga fail <strong>praktikum2_functions.py</strong>, kasutades analoogset käsku nagu eelmises ülesandes.</p>
-</li>
-<li><p class="first">Koodis on ära märgitud alad, mida pead muutma. PS: Funktsioon peab analoogselt eelmise ülesandega lõppema kuulutamisega (publish) ning ootamisega (sleep).</p>
-</li>
-<li><p class="first">Kui oled vahepeal draiveri terminali sulgenud, siis jätka punktiga a. Kui see eelmisest ülesandest veel käib, mine otse punkti juurde nr 5.</p>
-<ol class="loweralpha">
-<li><p class="first">Ava uus terminal ning loo ssh-ühendus robotisse.</p>
-</li>
-<li><p class="first">Uues terminalis sisesta</p>
-<p><strong>roslaunch robotont_teleop teleop_bare.launch</strong></p>
+<li><p class="first">Trüki terminali</p>
+<p><strong>nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum3_bangbang.py</strong></p>
+<p>See avab Python’i faili, kus hakkame väärtusi muutma.</p>
 </li>
 </ol>
+<p>Selleks, et me Python’is näeksime ja saaksime kasutada neid kaugusi, on meil muutuja nimega <em>distances</em>.
+Sellel muutujal on meie jaoks olulised kolm väärtust,
+mis on tabelis välja toodud.</p>
+<blockquote>
+<div><div class="figure">
+<a class="reference internal image-reference" href="../_images/tabel.png"><img alt="../_images/tabel.png" src="../_images/tabel.png" style="width: 635.0px; height: 166.0px;" /></a>
+</div>
+</div></blockquote>
+<p>Esialgu kasutame ainult <em>distances.centerMin</em> muutujat ning teeme robotile <em>bang-bang</em> kontrolleri.
+<em>Bang-bang</em> kontroller ehk eestikeeli kaks-punkt reguleerimine on automaatreguleerimine,
+kus lülitatakse seadet kahe oleku vahel, olenevalt anduri näidust.
+Näiteks kui toas on liiga külm, lülitab radiaator end sisse, kui temperatuur on normis või üle,
+lülitab end välja.</p>
+<p>Meie robotiga kasutame <em>bang-bang</em> kontrollerit nõnda:</p>
+<ul class="simple">
+<li>Vaatame kui lähedal on eesolev asi</li>
+<li>Kui asi on piisavalt kaugel või takistus puudub, sõidame otse</li>
+<li>Kui asi on liiga lähedal, tagurdame</li>
+</ul>
+<p><strong>Ülesanne</strong></p>
+<ol class="arabic">
+<li><p class="first">Ava uus terminal ning loo samuti ssh-ühendus robotisse.</p>
 </li>
-<li><p class="first">Koodi jooksutamiseks kasuta analoogset <strong>rosrun</strong> käsku nagu eelmises ülesandes, kuid vaheta failinimi, mida jooksutad. Peatamiseks vajuta samas terminalis korraga klahve <strong>Ctrl + C</strong>.</p>
+<li><p class="first">Terminalis sisesta</p>
+<p><strong>roslaunch robotont_teleop teleop_with_laserscan.launch</strong></p>
+<p>See paneb käima ROSi draiveri, mis kontrollib rataste kiirusi vastavalt meie sõnumitele ning annab ka andmeid eesolevate takistuste kohta.</p>
 </li>
-<li><p class="first">Implementeeri funktsioon otse sõitmiseks.</p>
-<ol class="loweralpha simple">
-<li>argumentideks peavad olema kestus (mitu korda <em>for</em>-tsüklit kordad) ja kiirus</li>
-<li>katseta oma funktsiooni</li>
+<li><p class="first">Kasutades <strong>if-else</strong>-lauset (<a class="reference external" href="https://progeopik.cs.ut.ee/03_liitlaused.html">https://progeopik.cs.ut.ee/03_liitlaused.html</a>), kirjuta eelnevalt kirjeldatud <em>bang-bang</em> kontroller eelnevalt avatud <strong>praktikum3_bangbang.py</strong> faili.</p>
+<p>Ülesanne on, et robot hoiaks end näiteks 0.5 meetri kaugusel takistusest.</p>
+</li>
+<li><p class="first">Kasuta väikeseid kiirusi (0.2 m/s või vähem).</p>
+</li>
+<li><p class="first">Salvesta fail, kasutades klahvikombinatsiooni Ctrl+X.</p>
+</li>
+<li><p class="first">Koodi käitamiseks sisesta terminali</p>
+<p><strong>rosrun robotont_blank_scripts praktikum3_bangbang.py</strong></p>
+<p>Ctrl+C paneb programmi kinni.</p>
+</li>
+<li><p class="first">Demonstreeri töötavat kontrollerit juhendajale.</p>
+</li>
 </ol>
+</div>
+<div class="section" id="vaatame-kuhu-poole-peaks-soitma-kui-uhes-kohas-asi-ees-on">
+<h2>Vaatame, kuhu poole peaks sõitma kui ühes kohas asi ees on.<a class="headerlink" href="#vaatame-kuhu-poole-peaks-soitma-kui-uhes-kohas-asi-ees-on" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<p>Selles ülesandes peab robot oskama nurga alt lähenedes avast läbi sõita.</p>
+<ol class="arabic">
+<li><p class="first">Ava terminal ja loo ssh-ühendus robotisse ja sisesta</p>
+<p><strong>roslaunch robotont_teleop teleop_with_laserscan.launch</strong></p>
+<p>VÕI
+kasuta eelmisest ülesandest juba käivat terminali.</p>
 </li>
-<li><p class="first">Implementeeri funktsioon pööramiseks.</p>
-<ol class="loweralpha simple">
-<li>argumentideks peavad olema kestus (mitu korda <em>for</em>-tsüklit kordad) ja kiirus</li>
-<li>katseta oma funktsiooni</li>
-</ol>
+<li><p class="first">Võta ette uus terminal ning ava seal fail <strong>praktikum3_betweenposts.py</strong></p>
 </li>
-<li><p class="first">Implementeeri funktsioon küljele sõitmiseks.</p>
-<ol class="loweralpha simple">
-<li>argumentideks peavad olema kestus (mitu korda <em>for</em>-tsüklit kordad) ja kiirus</li>
-<li>katseta oma funktsiooni</li>
-</ol>
+<li><p class="first">Kasutades teadmisi ja oskusi eelnevast ülesandest, kirjuta koodis ettenähtud kohta oma kood.
+Selle koodi abil peab robot oskama nurga alt avale lähenedes avast läbi sõitma.
+Nüüd on kasutada ka vasaku ja parema sektori kaugused.
+Robot peab suutma avast läbi sõita mõlemal pildil näidatud juhul.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/yl2setup.png"><img alt="../_images/yl2setup.png" src="../_images/yl2setup.png" style="width: 750.4px; height: 281.4px;" /></a>
+</div>
 </li>
-<li><p class="first">Kasutades neid funktsioone, pane robot sõitma mööda oma valitud kujundit.</p>
+<li><p class="first">Koodi jooksutamiseks sisesta terminali</p>
+<p><strong>rosrun robotont_blank_scripts praktikum3_betweenposts.py</strong></p>
+</li>
+<li><p class="first">Demonstreeri töötavat robotit juhendajale.</p>
 </li>
 </ol>
 </div>
@@ -237,10 +280,10 @@ Järgneva ülesande eesmärk on kirjutada funktsioonid erimoodi sõitmiseks, et 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="kontroller.html" class="btn btn-neutral float-right" title="Mis on kontroller?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="AR_markerid.html" class="btn btn-neutral float-right" title="AR markerid" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="loops.html" class="btn btn-neutral float-left" title="For- ja while tsüklid roboti juhtimisel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="functions.html" class="btn btn-neutral float-left" title="Funktsioonid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

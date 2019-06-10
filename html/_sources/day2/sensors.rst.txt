@@ -6,32 +6,60 @@ Mis andurid on Clearbotil?
 
 Clearbotil on Realsense D435 3D kaamera, millest saab tavalise kaamerapildi ja sügavuspildi. 
 
+Sügavuskaamera käivitamiseks:
+
+1.  Ava terminal ning loo ssh-ühendus robotisse.
+
+2.  Paneme robotis käima sõlmed, mis kaamera pilti ROSis kuulutavad.
+
+    .. code-block:: bash
+
+       roslaunch robotont_teleop teleop_with_laserscan.launch
+
+3.  Ava uus terminal ja sedista see oma roboti jaoks.
+
+    .. code-block:: bash
+       
+       seadista_robot
+
+3.  Kuvame roboti koos punktipilvega RVizis
+
+    .. code-block:: bash
+       
+       roslaunch robotont_description display_camera.launch
+
+.. todo:: Kontrollida
 
 
-Siin kasutame 3D kaamerast sügavuspildi andmeid. Aga mitte toorelt. 
-Nimelt on 3D sügavuspildist võetud ainult üks riba ning tehtud sellest 2D laserskann. 
-See laserskann on omakorda jagatud kolmeks ja võetud minimaalsed takistuste kaugused paremal, keskel ja vasakul.
+Punktipilv on arusaadav inimese jaoks, kuid programmides üsna keeruline kasutada. Teeme 3D punktipilvest midagi lihtsamat. Kui võtame 3D sügavuspildist kasutusele ainult ühe riba, siis on see võimalik tekitada 2D laserskann. Jagades laserskanni omakorda kolmeks sektoriks ja arvutades iga sektori kohta minimaalsed väärtused saame teada, kus asuvad lähimad takistused paremal, keskel ja vasakul.
 
 .. figure:: ../images/lab03/gridlaserscan.png
             :scale: 70 %
 
             ..
 
+Need arvutused tehakse kõik sinu eest robotis käivitatud sõlmedes.
+
 Kui kaugel on meist eespool paiknevad asjad?
 ---------------------------------------------
 
-Selleks, et teada, kui kaugel on lähim asi vasakul, keskel ja paremal, 
+Selleks, et teada, kui kaugel on lähim objekt vasakul, keskel ja paremal, 
 saame tellida ROS rubriiki “/scan_to_distance”, mis annab meile laserskannist arvutatud väärtused.
 
-1.  Ava terminal ning loo ssh-ühendus robotisse.
-2.  Kirjuta sinna
+1.  Veendu, et robotis käivitatud kaamera sõlmed endiselt töötavad.
 
-    **roslaunch robotont_teleop teleop_with_laserscan.launch**
+2.  Ava uus terminal ja sedista see oma roboti jaoks.
 
-3.  Nüüd ava uus terminal
-4.  Selleks, et vaadata, mis andmeid robot meile annab, kasutame terminalis käsku 
+    .. code-block:: bash
+       
+       seadista_robot
 
-    **rostopic echo /scan_to_distance**
+3.  Selleks, et vaadata, mis andmeid robot meile annab, kasutame käsku 
+
+    .. code-block:: bash
+
+       rostopic echo /scan_to_distance
+
 
     .. figure:: ../images/lab03/terminal.png
             :scale: 70 %
@@ -40,107 +68,7 @@ saame tellida ROS rubriiki “/scan_to_distance”, mis annab meile laserskannis
 
     *leftMin*, *centerMin* ja *rightMin* näitavad minimaalset kaugust igas sektoris. Ühikuks on meeter.
 
-5.  Liiguta oma kätt kaamera ees ning jälgi kuidas väärtused muutuvad.
+4.  Liiguta oma kätt kaamera ees ning jälgi kuidas väärtused muutuvad.
 
-Samuti on roboti ratastel enkoodrid, mis mõõdavad, kui palju ratas on liikunud, kuid seda me veel siin praktikumis ei kasuta.
-
-Mis on kontroller?
---------------------
-Eelmises lõigus tutvustati, mis on andurid. 
-Nüüd on vaja ka teada, kuidas saame liigutada robotit sõltuvalt andurite näidust. 
-Selleks on olemas kontrollerid. 
-Kontrollerite ülesanne on sõltuvalt sisendist, näiteks andurite näidust, 
-muuta väljundit, näiteks mootorite kiirust. 
-Näiteks auto püsikiirusehoidja mõõdab kiirust ning annab selle järgi erinevalt gaasi. 
-Kui kiirus on väiksem kui soovitud, annab kontroller gaasi 
-ning kui kiirus on suurem kui soovitud, siis laseb gaasi lahti. 
-Ka selles praktikumis kirjutame ise kontrolleri.
-
-
-Nüüd kui oleme aru saanud, kuidas need kaugused töötavad, on aeg neid kasutada.
-
-Proovime asjadele mitte otsa sõita
--------------------------------------
-
-**Võtame lahti faili, kuhu hakkame koodi kirjutama**
-
-1.  Ava terminal ning loo ssh-ühendus robotisse.
-2.  Trüki terminali 
-
-    **nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum3_bangbang.py**
-
-    See avab Python’i faili, kus hakkame väärtusi muutma.
-
-Selleks, et me Python’is näeksime ja saaksime kasutada neid kaugusi, on meil muutuja nimega *distances*. 
-Sellel muutujal on meie jaoks olulised kolm väärtust, 
-mis on tabelis välja toodud.
-
-    .. figure:: ../images/lab03/tabel.png
-            :scale: 100 %
-
-            ..
-
-Esialgu kasutame ainult *distances.centerMin* muutujat ning teeme robotile *bang-bang* kontrolleri. 
-*Bang-bang* kontroller ehk eestikeeli kaks-punkt reguleerimine on automaatreguleerimine, 
-kus lülitatakse seadet kahe oleku vahel, olenevalt anduri näidust. 
-Näiteks kui toas on liiga külm, lülitab radiaator end sisse, kui temperatuur on normis või üle, 
-lülitab end välja.
-
-Meie robotiga kasutame *bang-bang* kontrollerit nõnda:
-
-- Vaatame kui lähedal on eesolev asi
-
-- Kui asi on piisavalt kaugel või takistus puudub, sõidame otse
-
-- Kui asi on liiga lähedal, tagurdame
-
-**Ülesanne**
-
-1.  Ava uus terminal ning loo samuti ssh-ühendus robotisse.
-2.  Terminalis sisesta 
-
-    **roslaunch robotont_teleop teleop_with_laserscan.launch**
-
-    See paneb käima ROSi draiveri, mis kontrollib rataste kiirusi vastavalt meie sõnumitele ning annab ka andmeid eesolevate takistuste kohta.
-
-3.  Kasutades **if-else**-lauset (https://progeopik.cs.ut.ee/03_liitlaused.html), kirjuta eelnevalt kirjeldatud *bang-bang* kontroller eelnevalt avatud **praktikum3_bangbang.py** faili.
-
-    Ülesanne on, et robot hoiaks end näiteks 0.5 meetri kaugusel takistusest.
-
-4.  Kasuta väikeseid kiirusi (0.2 m/s või vähem).
-5.  Salvesta fail, kasutades klahvikombinatsiooni Ctrl+X. 
-6.  Koodi käitamiseks sisesta terminali
-
-    **rosrun robotont_blank_scripts praktikum3_bangbang.py**
-
-    Ctrl+C paneb programmi kinni.
-7.  Demonstreeri töötavat kontrollerit juhendajale.
-
-Vaatame, kuhu poole peaks sõitma kui ühes kohas asi ees on.
-----------------------------------------------------------------
-Selles ülesandes peab robot oskama nurga alt lähenedes avast läbi sõita.
-
-1.  Ava terminal ja loo ssh-ühendus robotisse ja sisesta
-
-    **roslaunch robotont_teleop teleop_with_laserscan.launch**
-
-    VÕI
-    kasuta eelmisest ülesandest juba käivat terminali.
-    
-2.  Võta ette uus terminal ning ava seal fail **praktikum3_betweenposts.py**
-3.  Kasutades teadmisi ja oskusi eelnevast ülesandest, kirjuta koodis ettenähtud kohta oma kood. 
-    Selle koodi abil peab robot oskama nurga alt avale lähenedes avast läbi sõitma. 
-    Nüüd on kasutada ka vasaku ja parema sektori kaugused.
-    Robot peab suutma avast läbi sõita mõlemal pildil näidatud juhul.
-
-    .. figure:: ../images/lab03/yl2setup.png
-            :scale: 70 %
-
-            ..
-
-4.  Koodi jooksutamiseks sisesta terminali
-
-    **rosrun robotont_blank_scripts praktikum3_betweenposts.py**
-
-5.  Demonstreeri töötavat robotit juhendajale.
+Lisaks kaamerale on roboti ratastel enkoodrid, mis mõõdavad, kui palju ratas on liikunud. Odomeetria kohta kuulutatakse infot rubriigis :code:`/odom`.
 

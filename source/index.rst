@@ -32,6 +32,7 @@ Tere tulemast ROS koolitusele!
   day2/move.rst  
   day2/loops.rst  
   day2/functions.rst  
+  day2/kontroller.rst
   day2/AR_markerid.rst
 
 .. toctree::

@@ -99,14 +99,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Roboti andurite info kuvamine</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#mis-andurid-on-clearbotil">Mis andurid on Clearbotil?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#kui-kaugel-on-meist-eespool-paiknevad-asjad">Kui kaugel on meist eespool paiknevad asjad?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mis-on-kontroller">Mis on kontroller?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#proovime-asjadele-mitte-otsa-soita">Proovime asjadele mitte otsa sõita</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#vaatame-kuhu-poole-peaks-soitma-kui-uhes-kohas-asi-ees-on">Vaatame, kuhu poole peaks sõitma kui ühes kohas asi ees on.</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="move.html">Programmeerime ROS roboti sõitma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html"><em>For</em>- ja <em>while</em> tsüklid roboti juhtimisel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Funktsioonid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kontroller.html">Mis on kontroller?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AR_markerid.html">AR markerid</a></li>
 </ul>
 <p class="caption"><span class="caption-text">3. Päev</span></p>
@@ -182,27 +180,54 @@
 <div class="section" id="mis-andurid-on-clearbotil">
 <h2>Mis andurid on Clearbotil?<a class="headerlink" href="#mis-andurid-on-clearbotil" title="Püsiviit sellele pealkirjale">¶</a></h2>
 <p>Clearbotil on Realsense D435 3D kaamera, millest saab tavalise kaamerapildi ja sügavuspildi.</p>
-<p>Siin kasutame 3D kaamerast sügavuspildi andmeid. Aga mitte toorelt.
-Nimelt on 3D sügavuspildist võetud ainult üks riba ning tehtud sellest 2D laserskann.
-See laserskann on omakorda jagatud kolmeks ja võetud minimaalsed takistuste kaugused paremal, keskel ja vasakul.</p>
-<div class="figure">
-<a class="reference internal image-reference" href="../_images/gridlaserscan.png"><img alt="../_images/gridlaserscan.png" src="../_images/gridlaserscan.png" style="width: 1008.0px; height: 630.7px;" /></a>
-</div>
-</div>
-<div class="section" id="kui-kaugel-on-meist-eespool-paiknevad-asjad">
-<h2>Kui kaugel on meist eespool paiknevad asjad?<a class="headerlink" href="#kui-kaugel-on-meist-eespool-paiknevad-asjad" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Selleks, et teada, kui kaugel on lähim asi vasakul, keskel ja paremal,
-saame tellida ROS rubriiki “/scan_to_distance”, mis annab meile laserskannist arvutatud väärtused.</p>
+<p>Sügavuskaamera käivitamiseks:</p>
 <ol class="arabic">
 <li><p class="first">Ava terminal ning loo ssh-ühendus robotisse.</p>
 </li>
-<li><p class="first">Kirjuta sinna</p>
-<p><strong>roslaunch robotont_teleop teleop_with_laserscan.launch</strong></p>
+<li><p class="first">Paneme robotis käima sõlmed, mis kaamera pilti ROSis kuulutavad.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_with_laserscan.launch
+</pre></div>
+</div>
 </li>
-<li><p class="first">Nüüd ava uus terminal</p>
+<li><p class="first">Ava uus terminal ja sedista see oma roboti jaoks.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>seadista_robot
+</pre></div>
+</div>
 </li>
-<li><p class="first">Selleks, et vaadata, mis andmeid robot meile annab, kasutame terminalis käsku</p>
-<p><strong>rostopic echo /scan_to_distance</strong></p>
+</ol>
+<ol class="arabic" start="3">
+<li><p class="first">Kuvame roboti koos punktipilvega RVizis</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_description display_camera.launch
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Teha</p>
+<p class="last">Kontrollida</p>
+</div>
+<p>Punktipilv on arusaadav inimese jaoks, kuid programmides üsna keeruline kasutada. Teeme 3D punktipilvest midagi lihtsamat. Kui võtame 3D sügavuspildist kasutusele ainult ühe riba, siis on see võimalik tekitada 2D laserskann. Jagades laserskanni omakorda kolmeks sektoriks ja arvutades iga sektori kohta minimaalsed väärtused saame teada, kus asuvad lähimad takistused paremal, keskel ja vasakul.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/gridlaserscan.png"><img alt="../_images/gridlaserscan.png" src="../_images/gridlaserscan.png" style="width: 1008.0px; height: 630.7px;" /></a>
+</div>
+<p>Need arvutused tehakse kõik sinu eest robotis käivitatud sõlmedes.</p>
+</div>
+<div class="section" id="kui-kaugel-on-meist-eespool-paiknevad-asjad">
+<h2>Kui kaugel on meist eespool paiknevad asjad?<a class="headerlink" href="#kui-kaugel-on-meist-eespool-paiknevad-asjad" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<p>Selleks, et teada, kui kaugel on lähim objekt vasakul, keskel ja paremal,
+saame tellida ROS rubriiki “/scan_to_distance”, mis annab meile laserskannist arvutatud väärtused.</p>
+<ol class="arabic">
+<li><p class="first">Veendu, et robotis käivitatud kaamera sõlmed endiselt töötavad.</p>
+</li>
+<li><p class="first">Ava uus terminal ja sedista see oma roboti jaoks.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>seadista_robot
+</pre></div>
+</div>
+</li>
+<li><p class="first">Selleks, et vaadata, mis andmeid robot meile annab, kasutame käsku</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>rostopic <span class="nb">echo</span> /scan_to_distance
+</pre></div>
+</div>
 <div class="figure">
 <a class="reference internal image-reference" href="../_images/terminal.png"><img alt="../_images/terminal.png" src="../_images/terminal.png" style="width: 512.4px; height: 306.6px;" /></a>
 </div>
@@ -211,99 +236,7 @@ saame tellida ROS rubriiki “/scan_to_distance”, mis annab meile laserskannis
 <li><p class="first">Liiguta oma kätt kaamera ees ning jälgi kuidas väärtused muutuvad.</p>
 </li>
 </ol>
-<p>Samuti on roboti ratastel enkoodrid, mis mõõdavad, kui palju ratas on liikunud, kuid seda me veel siin praktikumis ei kasuta.</p>
-</div>
-<div class="section" id="mis-on-kontroller">
-<h2>Mis on kontroller?<a class="headerlink" href="#mis-on-kontroller" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Eelmises lõigus tutvustati, mis on andurid.
-Nüüd on vaja ka teada, kuidas saame liigutada robotit sõltuvalt andurite näidust.
-Selleks on olemas kontrollerid.
-Kontrollerite ülesanne on sõltuvalt sisendist, näiteks andurite näidust,
-muuta väljundit, näiteks mootorite kiirust.
-Näiteks auto püsikiirusehoidja mõõdab kiirust ning annab selle järgi erinevalt gaasi.
-Kui kiirus on väiksem kui soovitud, annab kontroller gaasi
-ning kui kiirus on suurem kui soovitud, siis laseb gaasi lahti.
-Ka selles praktikumis kirjutame ise kontrolleri.</p>
-<p>Nüüd kui oleme aru saanud, kuidas need kaugused töötavad, on aeg neid kasutada.</p>
-</div>
-<div class="section" id="proovime-asjadele-mitte-otsa-soita">
-<h2>Proovime asjadele mitte otsa sõita<a class="headerlink" href="#proovime-asjadele-mitte-otsa-soita" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p><strong>Võtame lahti faili, kuhu hakkame koodi kirjutama</strong></p>
-<ol class="arabic">
-<li><p class="first">Ava terminal ning loo ssh-ühendus robotisse.</p>
-</li>
-<li><p class="first">Trüki terminali</p>
-<p><strong>nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum3_bangbang.py</strong></p>
-<p>See avab Python’i faili, kus hakkame väärtusi muutma.</p>
-</li>
-</ol>
-<p>Selleks, et me Python’is näeksime ja saaksime kasutada neid kaugusi, on meil muutuja nimega <em>distances</em>.
-Sellel muutujal on meie jaoks olulised kolm väärtust,
-mis on tabelis välja toodud.</p>
-<blockquote>
-<div><div class="figure">
-<a class="reference internal image-reference" href="../_images/tabel.png"><img alt="../_images/tabel.png" src="../_images/tabel.png" style="width: 635.0px; height: 166.0px;" /></a>
-</div>
-</div></blockquote>
-<p>Esialgu kasutame ainult <em>distances.centerMin</em> muutujat ning teeme robotile <em>bang-bang</em> kontrolleri.
-<em>Bang-bang</em> kontroller ehk eestikeeli kaks-punkt reguleerimine on automaatreguleerimine,
-kus lülitatakse seadet kahe oleku vahel, olenevalt anduri näidust.
-Näiteks kui toas on liiga külm, lülitab radiaator end sisse, kui temperatuur on normis või üle,
-lülitab end välja.</p>
-<p>Meie robotiga kasutame <em>bang-bang</em> kontrollerit nõnda:</p>
-<ul class="simple">
-<li>Vaatame kui lähedal on eesolev asi</li>
-<li>Kui asi on piisavalt kaugel või takistus puudub, sõidame otse</li>
-<li>Kui asi on liiga lähedal, tagurdame</li>
-</ul>
-<p><strong>Ülesanne</strong></p>
-<ol class="arabic">
-<li><p class="first">Ava uus terminal ning loo samuti ssh-ühendus robotisse.</p>
-</li>
-<li><p class="first">Terminalis sisesta</p>
-<p><strong>roslaunch robotont_teleop teleop_with_laserscan.launch</strong></p>
-<p>See paneb käima ROSi draiveri, mis kontrollib rataste kiirusi vastavalt meie sõnumitele ning annab ka andmeid eesolevate takistuste kohta.</p>
-</li>
-<li><p class="first">Kasutades <strong>if-else</strong>-lauset (<a class="reference external" href="https://progeopik.cs.ut.ee/03_liitlaused.html">https://progeopik.cs.ut.ee/03_liitlaused.html</a>), kirjuta eelnevalt kirjeldatud <em>bang-bang</em> kontroller eelnevalt avatud <strong>praktikum3_bangbang.py</strong> faili.</p>
-<p>Ülesanne on, et robot hoiaks end näiteks 0.5 meetri kaugusel takistusest.</p>
-</li>
-<li><p class="first">Kasuta väikeseid kiirusi (0.2 m/s või vähem).</p>
-</li>
-<li><p class="first">Salvesta fail, kasutades klahvikombinatsiooni Ctrl+X.</p>
-</li>
-<li><p class="first">Koodi käitamiseks sisesta terminali</p>
-<p><strong>rosrun robotont_blank_scripts praktikum3_bangbang.py</strong></p>
-<p>Ctrl+C paneb programmi kinni.</p>
-</li>
-<li><p class="first">Demonstreeri töötavat kontrollerit juhendajale.</p>
-</li>
-</ol>
-</div>
-<div class="section" id="vaatame-kuhu-poole-peaks-soitma-kui-uhes-kohas-asi-ees-on">
-<h2>Vaatame, kuhu poole peaks sõitma kui ühes kohas asi ees on.<a class="headerlink" href="#vaatame-kuhu-poole-peaks-soitma-kui-uhes-kohas-asi-ees-on" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Selles ülesandes peab robot oskama nurga alt lähenedes avast läbi sõita.</p>
-<ol class="arabic">
-<li><p class="first">Ava terminal ja loo ssh-ühendus robotisse ja sisesta</p>
-<p><strong>roslaunch robotont_teleop teleop_with_laserscan.launch</strong></p>
-<p>VÕI
-kasuta eelmisest ülesandest juba käivat terminali.</p>
-</li>
-<li><p class="first">Võta ette uus terminal ning ava seal fail <strong>praktikum3_betweenposts.py</strong></p>
-</li>
-<li><p class="first">Kasutades teadmisi ja oskusi eelnevast ülesandest, kirjuta koodis ettenähtud kohta oma kood.
-Selle koodi abil peab robot oskama nurga alt avale lähenedes avast läbi sõitma.
-Nüüd on kasutada ka vasaku ja parema sektori kaugused.
-Robot peab suutma avast läbi sõita mõlemal pildil näidatud juhul.</p>
-<div class="figure">
-<a class="reference internal image-reference" href="../_images/yl2setup.png"><img alt="../_images/yl2setup.png" src="../_images/yl2setup.png" style="width: 750.4px; height: 281.4px;" /></a>
-</div>
-</li>
-<li><p class="first">Koodi jooksutamiseks sisesta terminali</p>
-<p><strong>rosrun robotont_blank_scripts praktikum3_betweenposts.py</strong></p>
-</li>
-<li><p class="first">Demonstreeri töötavat robotit juhendajale.</p>
-</li>
-</ol>
+<p>Lisaks kaamerale on roboti ratastel enkoodrid, mis mõõdavad, kui palju ratas on liikunud. Odomeetria kohta kuulutatakse infot rubriigis <code class="code docutils literal notranslate"><span class="pre">/odom</span></code>.</p>
 </div>
 </div>
 
