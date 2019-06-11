@@ -1,8 +1,7 @@
 Roboti ROS juhtprogrammi käivitamine
 ====================================
 
-Alustuseks käivitame roboti pardaarvutis ROS-i programmi, mis suhtleb roboti elektroonikaga. See programm 
-Selleks kirjutame samas (:code:`kasutaja@clearbot-X`) robotiga ühendatud terminali aknasse:
+Alustuseks käivitame roboti pardaarvutis ROS-i programmi, mis suhtleb roboti elektroonikaga. Selleks kirjutame samas (:code:`kasutaja@clearbot-X`) robotiga ühendatud terminali aknasse:
 
 .. code-block:: bash
 

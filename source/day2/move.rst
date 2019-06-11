@@ -181,4 +181,21 @@ Sisesta roboti number ja vajuta Enter.
 Kopeerime juhtimisprogrammi sülearvutist robotisse
 --------------------------------------------------
 
-.. warning::`TODO Teeme seda, sest mõnikord võib ühendus olla sülearvuti ja roboti vahel kehva.`
+Kui roboti juhtimise eest vastutavad sõlmed on käivitatud mitte roboti vaid mõne muu arvuti peal, siis võib kehva ühenduse korral olla roboti töös tõrkeid ja robot ei reageeri piisavalt kiiresti. Seega on kasulik tagasiside põhjal juhtimissüsteemid hoida võimalikult riistvara lähedal ja vältida aeglase võrgu (näiteks WiFi) mõju.
+
+:code:`scp` on programm, millega saab kopeerida faile ühest arvutitest teise kasutades ssh ühendust. 
+
+1.  Ava sülearvutis uus terminal ja kopeeri :code:`move.py` sülearvutist robotisse. Ära unusta asendada :code:`clearbot-X` oma roboti nimega!
+
+.. code-block:: bash
+
+   scp ~/catkin_ws/src/ros_koolitus/scripts/move.py kasutaja@clearbot-X:~/catkin_ws/src/ros_koolitus/scripts/
+
+2.  Kontrolli, et eelmises peatükis käivitatud ROS draiver oleks endiselt töökorras.
+
+3.  Ava uus terminal ja sisene ssh kaudu robotisse. 
+
+4.  Käivita kopeeritud :code:`move.py` fail kimbus :code:`ros_koolitus`.
+
+Kärarohke WiFi võrgu korral võiksid märgata erinevusi võrreldes sülearvutist juhtimisega. Kas robot käitub teisiti või mitte?
+

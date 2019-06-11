@@ -12,7 +12,7 @@ ROS-is on roboti kiiruse seadmiseks vaja kuulutada kindlat tüüpi liikumisjuhis
  
        seadista_robot
 
-3. Programm küsib roboti numbrit ja teeb selle põhjal vajalikud sedaistused. Sisesta oma roboti number ja vajute Enter.
+3. Programm küsib roboti numbrit ja teeb selle põhjal vajalikud seadistused. Sisesta oma roboti number ja vajute Enter.
 
 
 4.  Nüüd saame käivitada ROS sõlme, mis jälgib terminali aknas tehtud klahvivajutusi ja on ühendatud robotiga:

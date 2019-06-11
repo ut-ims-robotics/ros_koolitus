@@ -7,10 +7,10 @@ Mis on kaardistamine?
 
 Siiani oleme kasutanud vaid andmeid, mida me saame reaalajas.
 Aga kas poleks mitte tore, kui robotil oleks mälu? 
-Kui sõidame mõnest takistusest mööda, siis on see info kasulik meelde jätta ning edaspidisel teekonna planeerimisel arvesse võtta.
+Kui sõidame mõnest takistusest mööda, siis on kasulik see takistus meelde jätta ning edaspidisel teekonna planeerimisel arvesse võtta.
 Selleks ongi kaardistamine. 
-Käesolevas praktikumis kasutame 3D kaameraga moodustatud 2D laserskanni, et luua ja jätta ka meelde kahemõõtmeline kaart roboti ümbrusest.
-Kaardi loomiseks ja sellel roboti asukoha määramiseks kasutame Google Cartographer on tarkvara, mida muuhulgas kasutavad ka Google’i isesõitvad autod.
+Käesolevas peatükis koostame 2D kaardi ümbrusest. Selleks kasutame 3D kaamerast tulevat punktipilve ja töötleme selle ümber kahemõõtmeliseks laserskanniks. Seejärel kasutatakse laserskanni andmeid, et luua kahemõõtmeline kaart ja jätta meelde.
+Selles näites kasutame kaardi loomiseks ja sellel roboti asukoha määramiseks kasutame Google Cartographer tarkvara, mida muuhulgas kasutavad ka Google’i isesõitvad autod.
 
 Laseri andmete visualiseerimine RVizis
 --------------------------------------

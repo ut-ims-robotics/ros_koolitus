@@ -313,6 +313,20 @@ Eelnevas näites töötas ROSi tuum sülearvutis. Selles näites kasutame ROS tu
 </div>
 <div class="section" id="kopeerime-juhtimisprogrammi-sulearvutist-robotisse">
 <h2>Kopeerime juhtimisprogrammi sülearvutist robotisse<a class="headerlink" href="#kopeerime-juhtimisprogrammi-sulearvutist-robotisse" title="Püsiviit sellele pealkirjale">¶</a></h2>
+<p>Kui roboti juhtimise eest vastutavad sõlmed on käivitatud mitte roboti vaid mõne muu arvuti peal, siis võib kehva ühenduse korral olla roboti töös tõrkeid ja robot ei reageeri piisavalt kiiresti. Seega on kasulik tagasiside põhjal juhtimissüsteemid hoida võimalikult riistvara lähedal ja vältida aeglase võrgu (näiteks WiFi) mõju.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">scp</span></code> on programm, millega saab kopeerida faile ühest arvutitest teise kasutades ssh ühendust.</p>
+<ol class="arabic simple">
+<li>Ava sülearvutis uus terminal ja kopeeri <code class="code docutils literal notranslate"><span class="pre">move.py</span></code> sülearvutist robotisse. Ära unusta asendada <code class="code docutils literal notranslate"><span class="pre">clearbot-X</span></code> oma roboti nimega!</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>scp ~/catkin_ws/src/ros_koolitus/scripts/move.py kasutaja@clearbot-X:~/catkin_ws/src/ros_koolitus/scripts/
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Kontrolli, et eelmises peatükis käivitatud ROS draiver oleks endiselt töökorras.</li>
+<li>Ava uus terminal ja sisene ssh kaudu robotisse.</li>
+<li>Käivita kopeeritud <code class="code docutils literal notranslate"><span class="pre">move.py</span></code> fail kimbus <code class="code docutils literal notranslate"><span class="pre">ros_koolitus</span></code>.</li>
+</ol>
+<p>Kärarohke WiFi võrgu korral võiksid märgata erinevusi võrreldes sülearvutist juhtimisega. Kas robot käitub teisiti või mitte?</p>
 </div>
 </div>
 
