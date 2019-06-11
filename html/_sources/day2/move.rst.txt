@@ -119,7 +119,7 @@ Tarkvara arendamisel tekib tihtipeale vigu, mis näiteks suurte tööstusrobotit
 
 .. code-block:: bash
 
-  rosrun robotont_koolitus move.py
+  rosrun ros_koolitus move.py
 
 .. note:: Peatamiseks vajuta samas terminalis korraga klahve **Ctrl + C**.
 
@@ -173,7 +173,7 @@ Sisesta roboti number ja vajuta Enter.
 
 .. code-block:: bash
 
-   rosrun robotont_koolitus move.py
+   rosrun ros_koolitus move.py
 
 .. note:: Peatamiseks töötab endiselt klahvikombinatsioon **Ctrl + C**.
 
