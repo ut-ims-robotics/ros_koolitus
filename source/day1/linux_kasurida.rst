@@ -79,7 +79,7 @@ Käsk **ls** ehk *list* kuvab kausta sisu, kus parasjagu asud.
 
             ..
 
-    c. Trüki terminali :code:`ls -a`. *Mis muutus? Mida uut väljundis failide kohta näed?*
+    c. Trüki terminali :code:`ls -la`. *Mis muutus? Mida uut väljundis failide kohta näed?*
         
         .. figure:: ../images/lab01/image5.png
             :scale: 70 %
