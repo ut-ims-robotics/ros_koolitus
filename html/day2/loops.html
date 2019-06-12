@@ -180,15 +180,14 @@
 <h1><em>For</em>- ja <em>while</em> tsüklid roboti juhtimisel<a class="headerlink" href="#for-ja-while-tsuklid-roboti-juhtimisel" title="Püsiviit sellele pealkirjale">¶</a></h1>
 <div class="section" id="sissejuhatus">
 <h2>Sissejuhatus<a class="headerlink" href="#sissejuhatus" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Eelmiste ülesannete juures andsime robotile ainult ühe käsu, mille järgi ta siis sõitis. Aga mis siis, kui tahame näiteks alguses otse sõita ja siis paremale ning jälle otse ja paremale ja korrata neid erinevaid käske?
-Selleks on programmeerimises olemas tsüklid. <em>while</em>-tsüklit, ehk lõpmatut tsüklit kasutasid juba tegelikult eelmistes ülesannetes. Kiiruse muutmise käsku edastati robotile korduvalt, seni kuni kood käis.
-Robotile on turvalisuse eesmärgil sisse ehitatud nn <em>failsafe</em>, mis jätab roboti seisma, kui poole sekundi jooksul käsku ei tule.
-Nüüd tahame aga öelda talle ühte käsku kindel arv kordi ja siis teist käsku kindel arv kordi. Siinkohal tuleb appi <a class="reference external" href="https://progeopik.cs.ut.ee/07_listid.html">for-tsükkel</a>.
-<em>for</em>-tsükkel jooksutab käske täpselt nii palju, kui sellele öelda.</p>
+<p>Eelmiste ülesannete juures andsime sõitmiseks robotile ainult ühe käsu. Aga mida teha siis, kui soovime anda robotile mitu ja neid korrata? Näiteks sõita mööda kolmnurka 10 korda või läbida lõpmatu arv kordi kaheksat.
+Selleks on programmeerimises olemas tsüklid. <em>while</em>-tsüklit, ehk lõpmatut tsüklit kasutasid juba tegelikult eelmistes ülesannetes. Kiiruse muutmise käsku edastati robotile korduvalt, seni kuni programm töötas.
+Robotile on turvalisuse eesmärgil sisse ehitatud nn <em>failsafe</em>, mis jätab roboti seisma, kui poole sekundi jooksul uut käsku ei tule.
+Järgnevas näites edastame robotile ühe käsu kindel arv kordi ja siis teise käsku kindel arv kordi. Siinkohal tuleb appi <a class="reference external" href="https://progeopik.cs.ut.ee/07_listid.html">for-tsükkel</a>, mis kordab käske etteantud kordi.</p>
 </div>
 <div class="section" id="naide">
 <h2>Näide<a class="headerlink" href="#naide" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Pythonis saame seda kasutada nii:</p>
+<p>Pythonis saame tsüklit kasutada nii:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">):</span>
   <span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.2</span>
   <span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
@@ -197,7 +196,7 @@ Nüüd tahame aga öelda talle ühte käsku kindel arv kordi ja siis teist käsk
   <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See kood ütleb iga 0.1 sekundi tagant robotile, et ta sõidaks edasi kiirusega 0.2 <em>m/s</em> ja seda täpselt 30 korda.</p>
+<p>Iga 0.1 sekundi tagant saadame robotile sõnumi, et ta sõidaks edasi kiirusega 0.2 <em>m/s</em> ja seda täpselt 30 korda ehk kokku 3 sekundit.</p>
 <p>Kui me lisame teise <em>for</em>-tsükli sinna otsa, siis järgmised 30 korda öeldakse robotile, et ta sõidaks kiirusega 0.2 <em>m/s</em> tagasi.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">):</span>
   <span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.2</span>
@@ -217,32 +216,14 @@ Nüüd tahame aga öelda talle ühte käsku kindel arv kordi ja siis teist käsk
 </div>
 <div class="section" id="ulesanne">
 <h2>Ülesanne<a class="headerlink" href="#ulesanne" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<ol class="arabic">
-<li><p class="first">Ülesanne on panna robot sõitma mööda ruudukujulist ala</p>
-<ol class="loweralpha simple">
-<li>Selleks pead tegema alguses ühe <em>for</em>-tsükli, mis sõidab otse mingi maa, millest saab ruudu külje pikkus.</li>
-<li>Selle tsükli järel peaks olema teine tsükkel, mis pöörab robotit 90 kraadi (pead leidma sobiva kiiruse ja tsükli pikkuse kombinatsiooni).</li>
-<li>Kuna need tsüklid on suuremas <em>while</em>-tsüklis, siis sellest peakski piisama ning robot sõidab igavesti ruutu.</li>
-</ol>
-</li>
-<li><p class="first">Ava terminal ning loo ssh-ühendus robotisse.</p>
-</li>
-<li><p class="first">Ava <strong>nano</strong>’ga fail <strong>loops.py</strong>, kasutades analoogset käsku nagu eelmises ülesandes.</p>
-</li>
-<li><p class="first">Koodis on ära märgitud ala, mida pead muutma.</p>
-</li>
-<li><p class="first">Kui oled vahepeal draiveri terminali sulgenud, siis jätka punktiga a. Kui see eelmisest ülesandest veel käib, mine otse punkti juurde nr 6.</p>
-<ol class="loweralpha">
-<li><p class="first">Ava uus terminal ning loo ssh-ühendus robotisse.</p>
-</li>
-<li><p class="first">Uues terminalis sisesta</p>
-<p><strong>roslaunch robotont_teleop teleop_bare.launch</strong></p>
-<p>nagu ka eelmises ülesandes.</p>
-</li>
-</ol>
-</li>
-<li><p class="first">Koodi jooksutamiseks kasuta analoogset <strong>rosrun</strong> käsku nagu eelmises ülesandes, kuid vaheta failinimi, mida jooksutad. Peatamiseks vajuta samas terminalis korraga klahve <strong>Ctrl + C</strong>.</p>
-</li>
+<p>Ülesanne on panna robot sõitma igavesti mööda ruudukujulist ala.</p>
+<ol class="arabic simple">
+<li>Kasuta ROS käsku <code class="code docutils literal notranslate"><span class="pre">roscd</span></code> ja navigeeri ROS kimpu <code class="code docutils literal notranslate"><span class="pre">ros_koolitus</span></code>.</li>
+<li>Ava <code class="code docutils literal notranslate"><span class="pre">nano</span></code> abil fail <code class="code docutils literal notranslate"><span class="pre">loops.py</span></code>, mille leiad alamkaustast <code class="code docutils literal notranslate"><span class="pre">scripts/</span></code>.</li>
+<li>Leia failist muutmiseks ettenähtud ala ja kombineeri eelneva näite põhjal programm, mis läbib ühe ruudu ning ja jõuab tagasi algasendisse.</li>
+<li>Ümbritse ruudu läbimise kood <em>while</em>-tsükliga, et panna robot igavesti ruutu sõitma.</li>
+<li>Testi loodud programmi Gazebo simulatsiooni abil.</li>
+<li>Kui Gazeboga teeb programm seda, mis ette nähtud, siis testi seda robotiga (kas otse sülearvutist või kopeerides programmi robotisse).</li>
 </ol>
 </div>
 </div>

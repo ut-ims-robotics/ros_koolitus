@@ -4,16 +4,15 @@
 Sissejuhatus
 ------------
 
-Eelmiste ülesannete juures andsime robotile ainult ühe käsu, mille järgi ta siis sõitis. Aga mis siis, kui tahame näiteks alguses otse sõita ja siis paremale ning jälle otse ja paremale ja korrata neid erinevaid käske?
-Selleks on programmeerimises olemas tsüklid. *while*-tsüklit, ehk lõpmatut tsüklit kasutasid juba tegelikult eelmistes ülesannetes. Kiiruse muutmise käsku edastati robotile korduvalt, seni kuni kood käis. 
-Robotile on turvalisuse eesmärgil sisse ehitatud nn *failsafe*, mis jätab roboti seisma, kui poole sekundi jooksul käsku ei tule. 
-Nüüd tahame aga öelda talle ühte käsku kindel arv kordi ja siis teist käsku kindel arv kordi. Siinkohal tuleb appi `for-tsükkel <https://progeopik.cs.ut.ee/07_listid.html>`_.
-*for*-tsükkel jooksutab käske täpselt nii palju, kui sellele öelda.
+Eelmiste ülesannete juures andsime sõitmiseks robotile ainult ühe käsu. Aga mida teha siis, kui soovime anda robotile mitu ja neid korrata? Näiteks sõita mööda kolmnurka 10 korda või läbida lõpmatu arv kordi kaheksat.
+Selleks on programmeerimises olemas tsüklid. *while*-tsüklit, ehk lõpmatut tsüklit kasutasid juba tegelikult eelmistes ülesannetes. Kiiruse muutmise käsku edastati robotile korduvalt, seni kuni programm töötas. 
+Robotile on turvalisuse eesmärgil sisse ehitatud nn *failsafe*, mis jätab roboti seisma, kui poole sekundi jooksul uut käsku ei tule. 
+Järgnevas näites edastame robotile ühe käsu kindel arv kordi ja siis teise käsku kindel arv kordi. Siinkohal tuleb appi `for-tsükkel <https://progeopik.cs.ut.ee/07_listid.html>`_, mis kordab käske etteantud kordi.
 
 Näide
 -----
 
-Pythonis saame seda kasutada nii:
+Pythonis saame tsüklit kasutada nii:
 
 .. code-block:: python
 
@@ -24,7 +23,7 @@ Pythonis saame seda kasutada nii:
       velocity_publisher.publish(vel_msg)
       rospy.sleep(0.1)
 
-See kood ütleb iga 0.1 sekundi tagant robotile, et ta sõidaks edasi kiirusega 0.2 *m/s* ja seda täpselt 30 korda.
+Iga 0.1 sekundi tagant saadame robotile sõnumi, et ta sõidaks edasi kiirusega 0.2 *m/s* ja seda täpselt 30 korda ehk kokku 3 sekundit.
 
 Kui me lisame teise *for*-tsükli sinna otsa, siis järgmised 30 korda öeldakse robotile, et ta sõidaks kiirusega 0.2 *m/s* tagasi.
 
@@ -48,21 +47,11 @@ Nii saab erinevaid käske üksteise otsa lisada. Muutes :code:`range(0,30)` numb
 Ülesanne 
 ---------
 
-1.  Ülesanne on panna robot sõitma mööda ruudukujulist ala
+Ülesanne on panna robot sõitma igavesti mööda ruudukujulist ala.
 
-    a.  Selleks pead tegema alguses ühe *for*-tsükli, mis sõidab otse mingi maa, millest saab ruudu külje pikkus.
-    b.  Selle tsükli järel peaks olema teine tsükkel, mis pöörab robotit 90 kraadi (pead leidma sobiva kiiruse ja tsükli pikkuse kombinatsiooni).
-    c.  Kuna need tsüklid on suuremas *while*-tsüklis, siis sellest peakski piisama ning robot sõidab igavesti ruutu.
-2.  Ava terminal ning loo ssh-ühendus robotisse.
-3.  Ava **nano**'ga fail **loops.py**, kasutades analoogset käsku nagu eelmises ülesandes.
-4.  Koodis on ära märgitud ala, mida pead muutma.
-5.  Kui oled vahepeal draiveri terminali sulgenud, siis jätka punktiga a. Kui see eelmisest ülesandest veel käib, mine otse punkti juurde nr 6.
-
-    a.  Ava uus terminal ning loo ssh-ühendus robotisse.
-    b.  Uues terminalis sisesta 
-
-        **roslaunch robotont_teleop teleop_bare.launch**
-
-        nagu ka eelmises ülesandes.
-6.  Koodi jooksutamiseks kasuta analoogset **rosrun** käsku nagu eelmises ülesandes, kuid vaheta failinimi, mida jooksutad. Peatamiseks vajuta samas terminalis korraga klahve **Ctrl + C**.
-
+1.  Kasuta ROS käsku :code:`roscd` ja navigeeri ROS kimpu :code:`ros_koolitus`.
+2.  Ava :code:`nano` abil fail :code:`loops.py`, mille leiad alamkaustast :code:`scripts/`.
+3.  Leia failist muutmiseks ettenähtud ala ja kombineeri eelneva näite põhjal programm, mis läbib ühe ruudu ning ja jõuab tagasi algasendisse.
+4.  Ümbritse ruudu läbimise kood *while*-tsükliga, et panna robot igavesti ruutu sõitma.
+5.  Testi loodud programmi Gazebo simulatsiooni abil.
+6.  Kui Gazeboga teeb programm seda, mis ette nähtud, siis testi seda robotiga (kas otse sülearvutist või kopeerides programmi robotisse). 

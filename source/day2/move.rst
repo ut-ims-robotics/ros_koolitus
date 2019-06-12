@@ -87,7 +87,7 @@ Näiteülesanne
 
 .. code-block:: bash
 
-  nano catkin_ws/src/ros_koolitus/scripts/move.py
+   nano catkin_ws/src/ros_koolitus/scripts/move.py
 
 See avab Python’i faili, kus hakkame väärtusi muutma. 
 
@@ -98,9 +98,9 @@ See avab Python’i faili, kus hakkame väärtusi muutma.
                 :scale: 70 %
 
                 ..
-3. Määra *vel_msg.linear.x* väärtuseks 0.2.
+3.  Määra *vel_msg.linear.x* väärtuseks 0.2.
 
-4. Salvesta ning välju.
+4.  Salvesta ning välju.
 
 
 Programmi käitamine simulaatoris
@@ -108,14 +108,14 @@ Programmi käitamine simulaatoris
 
 Tarkvara arendamisel tekib tihtipeale vigu, mis näiteks suurte tööstusrobotite puhul võivad põhjustada pöördumatut kahju nii robotile endale, ümbritsevatele objektidele kui ka roboti operaatorile. Selle vältimiseks on enne programmi käivitamist päris robotil alati kasulik seda põhjalikult testida simulaatoris. ROSi simulatsioonikeskkonnaks on Gazebo. Gazebo võimaldab luua virtuaalse maailma, paigutada sinna robot, ja simuleerida toimuvat.
 
-1. Gazebo käitamiseks ava uus terminali aken ning sisesta käsk:
+1.  Gazebo käitamiseks ava uus terminali aken ning sisesta käsk:
 
 .. code-block:: bash
 
   roslaunch robotont_description gazebo.launch
 
 
-2. Otsi uuesti üles eelmine terminal ja käivita seal oma muudatustega programm:
+2.  Otsi uuesti üles eelmine terminal ja käivita seal oma muudatustega programm:
 
 .. code-block:: bash
 
@@ -123,7 +123,7 @@ Tarkvara arendamisel tekib tihtipeale vigu, mis näiteks suurte tööstusrobotit
 
 .. note:: Peatamiseks vajuta samas terminalis korraga klahve **Ctrl + C**.
 
-3. Kui robot sõitis otse, siis jätka, kui ei sõitnud, siis mõtle, mis võis minna valesti ja vajadusel küsi abi juhendajalt.
+3.  Kontrolli, kas robot sõitis otse. Kui ei sõitnud, siis mõtle, mis võis minna valesti ja vajadusel küsi abi juhendajalt.
 
 
 Ülesanded
@@ -149,9 +149,7 @@ Kõigepealt käivitame robotis draiveri sõlme, mis ühtlasi paneb käima ka ROS
 
 1.  Sulge Gazebo, selleks leia terminal, kust Gazebo käivitasid ja vajuta **CTRL + C**
 
-2.  Kasutades sama terminali, loo ssh-ühendus robotisse.
-
-2.  Uues terminalis, mis on ühenduses robotiga sisesta:
+2.  Kasutades sama terminali, loo ssh-ühendus robotisse ja käivita seal
 
 .. code-block:: bash
 
@@ -159,7 +157,7 @@ Kõigepealt käivitame robotis draiveri sõlme, mis ühtlasi paneb käima ka ROS
 
 See paneb käima ROSi roboti draiveri sõlme, mis kontrollib rataste kiirusi vastavalt meie saadetud sõnumitele.
 
-Kuna nüüd soovime kasutada ROSi tuuma robotil, siis on vaja peremehe (*ROS Master*) muutumisest sülearvutile teada anda. Selleks sisesta sülearvutiga ühenduses olevas terminalis käsk:
+Kuna nüüd soovime kasutada ROSi tuuma robotil, siis on vaja sisestada sülearvuti terminalis käsk:
 
 .. code-block:: bash
 
@@ -167,7 +165,7 @@ Kuna nüüd soovime kasutada ROSi tuuma robotil, siis on vaja peremehe (*ROS Mas
 
 Sisesta roboti number ja vajuta Enter.
 
-.. tip:: See käsk teeb mõned muudatused ROS keskkonnaparameetrites. Kõik ROS tööriistad ja programmid, mis edaspidi selles terminali aknas kasutatakse on nüüd seadistatud võtma ühendust ROS tuumaga, mis asub robotil.
+.. tip:: See käsk teeb mõned muudatused ROS keskkonnaparameetrites. Kõik ROS tööriistad ja programmid, mis edaspidi selles terminali aknas kasutatakse on nüüd seadistatud võtavad simulatsioonikeskkonna asemel ühendust robotiga.
 
 3.  Nüüd tuleb välja ROS tõeline võimekus, sest oma muudetud :code:`move.py` programmi saad käivitada täpselt nii nagu simulatsiooni puhul.
 
@@ -183,7 +181,7 @@ Kopeerime juhtimisprogrammi sülearvutist robotisse
 
 Kui roboti juhtimise eest vastutavad sõlmed on käivitatud mitte roboti vaid mõne muu arvuti peal, siis võib kehva ühenduse korral olla roboti töös tõrkeid ja robot ei reageeri piisavalt kiiresti. Seega on kasulik tagasiside põhjal juhtimissüsteemid hoida võimalikult riistvara lähedal ja vältida aeglase võrgu (näiteks WiFi) mõju.
 
-:code:`scp` on programm, millega saab kopeerida faile ühest arvutitest teise kasutades ssh ühendust. 
+:code:`scp` on programm, millega saab kopeerida faile ühest arvutitest teise kasutades ssh-ühendust. 
 
 1.  Ava sülearvutis uus terminal ja kopeeri :code:`move.py` sülearvutist robotisse. Ära unusta asendada :code:`clearbot-X` oma roboti nimega!
 

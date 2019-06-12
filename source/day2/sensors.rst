@@ -28,7 +28,7 @@ Sügavuskaamera käivitamiseks:
        
        roslaunch robotont_description display_camera.launch
 
-.. todo:: Kontrollida
+4.  Kasuta esimesel päeval õpitut ja sõida robotiga samal ajal ringi.
 
 
 Punktipilv on arusaadav inimese jaoks, kuid programmides üsna keeruline kasutada. Teeme 3D punktipilvest midagi lihtsamat. Kui võtame 3D sügavuspildist kasutusele ainult ühe riba, siis on see võimalik tekitada 2D laserskann. Jagades laserskanni omakorda kolmeks sektoriks ja arvutades iga sektori kohta minimaalsed väärtused saame teada, kus asuvad lähimad takistused paremal, keskel ja vasakul.

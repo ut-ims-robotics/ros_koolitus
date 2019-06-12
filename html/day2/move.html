@@ -258,7 +258,7 @@ Leia koodis see koht ning muutes x, y ja z väärtusi, lahenda järgnevad ülesa
 <p class="last">Peatamiseks vajuta samas terminalis korraga klahve <strong>Ctrl + C</strong>.</p>
 </div>
 <ol class="arabic simple" start="3">
-<li>Kui robot sõitis otse, siis jätka, kui ei sõitnud, siis mõtle, mis võis minna valesti ja vajadusel küsi abi juhendajalt.</li>
+<li>Kontrolli, kas robot sõitis otse. Kui ei sõitnud, siis mõtle, mis võis minna valesti ja vajadusel küsi abi juhendajalt.</li>
 </ol>
 </div>
 <div class="section" id="ulesanded">
@@ -282,23 +282,20 @@ Eelnevas näites töötas ROSi tuum sülearvutis. Selles näites kasutame ROS tu
 <p>Kõigepealt käivitame robotis draiveri sõlme, mis ühtlasi paneb käima ka ROS tuuma.</p>
 <ol class="arabic simple">
 <li>Sulge Gazebo, selleks leia terminal, kust Gazebo käivitasid ja vajuta <strong>CTRL + C</strong></li>
-<li>Kasutades sama terminali, loo ssh-ühendus robotisse.</li>
-</ol>
-<ol class="arabic simple" start="2">
-<li>Uues terminalis, mis on ühenduses robotiga sisesta:</li>
+<li>Kasutades sama terminali, loo ssh-ühendus robotisse ja käivita seal</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_bare.launch
 </pre></div>
 </div>
 <p>See paneb käima ROSi roboti draiveri sõlme, mis kontrollib rataste kiirusi vastavalt meie saadetud sõnumitele.</p>
-<p>Kuna nüüd soovime kasutada ROSi tuuma robotil, siis on vaja peremehe (<em>ROS Master</em>) muutumisest sülearvutile teada anda. Selleks sisesta sülearvutiga ühenduses olevas terminalis käsk:</p>
+<p>Kuna nüüd soovime kasutada ROSi tuuma robotil, siis on vaja sisestada sülearvuti terminalis käsk:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre>seadista_robot
 </pre></div>
 </div>
 <p>Sisesta roboti number ja vajuta Enter.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Nõuanne</p>
-<p class="last">See käsk teeb mõned muudatused ROS keskkonnaparameetrites. Kõik ROS tööriistad ja programmid, mis edaspidi selles terminali aknas kasutatakse on nüüd seadistatud võtma ühendust ROS tuumaga, mis asub robotil.</p>
+<p class="last">See käsk teeb mõned muudatused ROS keskkonnaparameetrites. Kõik ROS tööriistad ja programmid, mis edaspidi selles terminali aknas kasutatakse on nüüd seadistatud võtavad simulatsioonikeskkonna asemel ühendust robotiga.</p>
 </div>
 <ol class="arabic simple" start="3">
 <li>Nüüd tuleb välja ROS tõeline võimekus, sest oma muudetud <code class="code docutils literal notranslate"><span class="pre">move.py</span></code> programmi saad käivitada täpselt nii nagu simulatsiooni puhul.</li>
@@ -314,7 +311,7 @@ Eelnevas näites töötas ROSi tuum sülearvutis. Selles näites kasutame ROS tu
 <div class="section" id="kopeerime-juhtimisprogrammi-sulearvutist-robotisse">
 <h2>Kopeerime juhtimisprogrammi sülearvutist robotisse<a class="headerlink" href="#kopeerime-juhtimisprogrammi-sulearvutist-robotisse" title="Püsiviit sellele pealkirjale">¶</a></h2>
 <p>Kui roboti juhtimise eest vastutavad sõlmed on käivitatud mitte roboti vaid mõne muu arvuti peal, siis võib kehva ühenduse korral olla roboti töös tõrkeid ja robot ei reageeri piisavalt kiiresti. Seega on kasulik tagasiside põhjal juhtimissüsteemid hoida võimalikult riistvara lähedal ja vältida aeglase võrgu (näiteks WiFi) mõju.</p>
-<p><code class="code docutils literal notranslate"><span class="pre">scp</span></code> on programm, millega saab kopeerida faile ühest arvutitest teise kasutades ssh ühendust.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">scp</span></code> on programm, millega saab kopeerida faile ühest arvutitest teise kasutades ssh-ühendust.</p>
 <ol class="arabic simple">
 <li>Ava sülearvutis uus terminal ja kopeeri <code class="code docutils literal notranslate"><span class="pre">move.py</span></code> sülearvutist robotisse. Ära unusta asendada <code class="code docutils literal notranslate"><span class="pre">clearbot-X</span></code> oma roboti nimega!</li>
 </ol>

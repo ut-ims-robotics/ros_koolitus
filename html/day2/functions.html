@@ -179,53 +179,42 @@
 <h1>Funktsioonid<a class="headerlink" href="#funktsioonid" title="Püsiviit sellele pealkirjale">¶</a></h1>
 <div class="section" id="sissejuhatus">
 <h2>Sissejuhatus<a class="headerlink" href="#sissejuhatus" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Selleks, et meil oleks kergem koodi kirjutada ja et me ei peaks koodi kopeerima, on olemas funktsioonid.
-Korduva koodi saame kirjutada funktsioonide sisse ning funktsiooni ühe reaga välja kutsuda.
-See parandab koodi loetavust ning teeb edasise programmeerimise lihtsamaks.
+<p>Selleks, et lihtsustada programmi kirjutamist ja vältida kopeerimist, on olemas funktsioonid.
+Korduvad programmi osad saame kirjutada funktsioonide sisse ning funktsiooni ühe reaga välja kutsuda.
+See parandab loetavust ning teeb edasise programmeerimise lihtsamaks.
 Funktsioonide kohta saab lugeda <a class="reference external" href="https://progeopik.cs.ut.ee/04_funktsioonid.html">progeõpikust</a>.
 Järgneva ülesande eesmärk on kirjutada funktsioonid erimoodi sõitmiseks, et hiljem oleks lihtne ühe käsuga panna robot soovitud suunas sõitma.</p>
 </div>
 <div class="section" id="ulesanne-funktsioonid">
 <h2>Ülesanne - funktsioonid<a class="headerlink" href="#ulesanne-funktsioonid" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<ol class="arabic">
-<li><p class="first">Ava terminal ning loo ssh-ühendus robotisse.</p>
-</li>
-<li><p class="first">Ava <strong>nano</strong>’ga fail <strong>praktikum2_functions.py</strong>, kasutades analoogset käsku nagu eelmises ülesandes.</p>
-</li>
-<li><p class="first">Koodis on ära märgitud alad, mida pead muutma. PS: Funktsioon peab analoogselt eelmise ülesandega lõppema kuulutamisega (publish) ning ootamisega (sleep).</p>
-</li>
-<li><p class="first">Kui oled vahepeal draiveri terminali sulgenud, siis jätka punktiga a. Kui see eelmisest ülesandest veel käib, mine otse punkti juurde nr 5.</p>
-<ol class="loweralpha">
-<li><p class="first">Ava uus terminal ning loo ssh-ühendus robotisse.</p>
-</li>
-<li><p class="first">Uues terminalis sisesta</p>
-<p><strong>roslaunch robotont_teleop teleop_bare.launch</strong></p>
-</li>
+<p>Implementeeri funktsioon otse sõitmiseks.</p>
+<ol class="arabic simple">
+<li>Kasuta ROS käsku <code class="code docutils literal notranslate"><span class="pre">roscd</span></code> ja navigeeri ROS kimpu <code class="code docutils literal notranslate"><span class="pre">ros_koolitus</span></code>.</li>
+<li>Ava <code class="code docutils literal notranslate"><span class="pre">nano</span></code> abil fail <code class="code docutils literal notranslate"><span class="pre">functions.py</span></code>, mille leiad alamkaustast <code class="code docutils literal notranslate"><span class="pre">scripts/</span></code>.</li>
+<li>Leia failist ala funktsiooni defineerimiseks ja ala funktsiooni välja kutsumiseks.</li>
+<li>Implementeeri funktsioon otse sõitmiseks.<ol class="loweralpha">
+<li>argumentideks peavad olema kestus (mitu korda <em>for</em>-tsüklit korratakse) ja kiirus</li>
+<li>katseta oma funktsiooni Gazeboga</li>
 </ol>
 </li>
-<li><p class="first">Koodi jooksutamiseks kasuta analoogset <strong>rosrun</strong> käsku nagu eelmises ülesandes, kuid vaheta failinimi, mida jooksutad. Peatamiseks vajuta samas terminalis korraga klahve <strong>Ctrl + C</strong>.</p>
-</li>
-<li><p class="first">Implementeeri funktsioon otse sõitmiseks.</p>
-<ol class="loweralpha simple">
-<li>argumentideks peavad olema kestus (mitu korda <em>for</em>-tsüklit kordad) ja kiirus</li>
-<li>katseta oma funktsiooni</li>
+<li>Implementeeri funktsioon pööramiseks.<ol class="loweralpha">
+<li>argumentideks peavad olema kestus (mitu korda <em>for</em>-tsüklit korratakse) ja kiirus</li>
+<li>katseta oma funktsiooni Gazeboga</li>
 </ol>
 </li>
-<li><p class="first">Implementeeri funktsioon pööramiseks.</p>
-<ol class="loweralpha simple">
-<li>argumentideks peavad olema kestus (mitu korda <em>for</em>-tsüklit kordad) ja kiirus</li>
-<li>katseta oma funktsiooni</li>
+<li>Implementeeri funktsioon küljele sõitmiseks.<ol class="loweralpha">
+<li>argumentideks peavad olema kestus (mitu korda <em>for</em>-tsüklit korratakse) ja kiirus</li>
+<li>katseta oma funktsiooni Gazeboga</li>
 </ol>
 </li>
-<li><p class="first">Implementeeri funktsioon küljele sõitmiseks.</p>
-<ol class="loweralpha simple">
-<li>argumentideks peavad olema kestus (mitu korda <em>for</em>-tsüklit kordad) ja kiirus</li>
-<li>katseta oma funktsiooni</li>
+<li>Kasuta Gazebo simulaatorit, et katsetada kõiki neid funktsioone.</li>
+<li>Demonstreeri kujundi läbimist juhendajale.</li>
+<li>Kui Gazeboga teeb programm seda, mis ette nähtud, siis testi seda robotiga (kas otse sülearvutist või kopeerides programmi robotisse).</li>
 </ol>
-</li>
-<li><p class="first">Kasutades neid funktsioone, pane robot sõitma mööda oma valitud kujundit.</p>
-</li>
-</ol>
+<div class="admonition tip">
+<p class="first admonition-title">Nõuanne</p>
+<p class="last">Lõpeta funktsioonid analoogselt eelmise ülesandega kuulutamisega (publish) ning ootamisega (sleep).</p>
+</div>
 </div>
 </div>
 

@@ -103,6 +103,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Mis on kontroller?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sissejuhatus">Sissejuhatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#proovime-asjadele-mitte-otsa-soita">Proovime asjadele mitte otsa sõita</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ulesanne">Ülesanne</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vaatame-kuhu-poole-peaks-soitma-kui-uhes-kohas-asi-ees-on">Vaatame, kuhu poole peaks sõitma kui ühes kohas asi ees on.</a></li>
 </ul>
 </li>
@@ -180,16 +181,14 @@
 <h1>Mis on kontroller?<a class="headerlink" href="#mis-on-kontroller" title="Püsiviit sellele pealkirjale">¶</a></h1>
 <div class="section" id="sissejuhatus">
 <h2>Sissejuhatus<a class="headerlink" href="#sissejuhatus" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Eelmises lõigus tutvustati, mis on andurid.
-Nüüd on vaja ka teada, kuidas saame liigutada robotit sõltuvalt andurite näidust.
+<p>Varasemalt tutvusime anduritega ja kuvasime andurite näite.
+Nüüd uurime, kuidas saame liigutada robotit sõltuvalt andurite näidust.
 Selleks on olemas kontrollerid.
-Kontrollerite ülesanne on sõltuvalt sisendist, näiteks andurite näidust,
-muuta väljundit, näiteks mootorite kiirust.
+Kontrollerite ülesanne on sõltuvalt sisendist, näiteks andurite näidust, muuta väljundit, näiteks mootorite kiirust.
 Näiteks auto püsikiirusehoidja mõõdab kiirust ning annab selle järgi erinevalt gaasi.
-Kui kiirus on väiksem kui soovitud, annab kontroller gaasi
+Kui kiirus on väiksem kui soovitud, annab kontroller gaasi juurde
 ning kui kiirus on suurem kui soovitud, siis laseb gaasi lahti.
-Ka selles praktikumis kirjutame ise kontrolleri.</p>
-<p>Nüüd kui oleme aru saanud, kuidas need kaugused töötavad, on aeg neid kasutada.</p>
+Järgnevates näidetes kirjutame ise kontrolleri.</p>
 </div>
 <div class="section" id="proovime-asjadele-mitte-otsa-soita">
 <h2>Proovime asjadele mitte otsa sõita<a class="headerlink" href="#proovime-asjadele-mitte-otsa-soita" title="Püsiviit sellele pealkirjale">¶</a></h2>
@@ -198,7 +197,9 @@ Ka selles praktikumis kirjutame ise kontrolleri.</p>
 <li><p class="first">Ava terminal ning loo ssh-ühendus robotisse.</p>
 </li>
 <li><p class="first">Trüki terminali</p>
-<p><strong>nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum3_bangbang.py</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum3_bangbang.py
+</pre></div>
+</div>
 <p>See avab Python’i faili, kus hakkame väärtusi muutma.</p>
 </li>
 </ol>
@@ -221,9 +222,11 @@ lülitab end välja.</p>
 <li>Kui asi on piisavalt kaugel või takistus puudub, sõidame otse</li>
 <li>Kui asi on liiga lähedal, tagurdame</li>
 </ul>
-<p><strong>Ülesanne</strong></p>
+</div>
+<div class="section" id="ulesanne">
+<h2>Ülesanne<a class="headerlink" href="#ulesanne" title="Püsiviit sellele pealkirjale">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Ava uus terminal ning loo samuti ssh-ühendus robotisse.</p>
+<li><p class="first">Ava uus terminal ning loo ssh-ühendus robotisse.</p>
 </li>
 <li><p class="first">Terminalis sisesta</p>
 <p><strong>roslaunch robotont_teleop teleop_with_laserscan.launch</strong></p>

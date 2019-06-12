@@ -4,18 +4,15 @@ Mis on kontroller?
 Sissejuhatus
 ------------
 
-Eelmises lõigus tutvustati, mis on andurid. 
-Nüüd on vaja ka teada, kuidas saame liigutada robotit sõltuvalt andurite näidust. 
+Varasemalt tutvusime anduritega ja kuvasime andurite näite. 
+Nüüd uurime, kuidas saame liigutada robotit sõltuvalt andurite näidust. 
 Selleks on olemas kontrollerid. 
-Kontrollerite ülesanne on sõltuvalt sisendist, näiteks andurite näidust, 
-muuta väljundit, näiteks mootorite kiirust. 
+Kontrollerite ülesanne on sõltuvalt sisendist, näiteks andurite näidust, muuta väljundit, näiteks mootorite kiirust. 
 Näiteks auto püsikiirusehoidja mõõdab kiirust ning annab selle järgi erinevalt gaasi. 
-Kui kiirus on väiksem kui soovitud, annab kontroller gaasi 
+Kui kiirus on väiksem kui soovitud, annab kontroller gaasi juurde
 ning kui kiirus on suurem kui soovitud, siis laseb gaasi lahti. 
-Ka selles praktikumis kirjutame ise kontrolleri.
+Järgnevates näidetes kirjutame ise kontrolleri.
 
-
-Nüüd kui oleme aru saanud, kuidas need kaugused töötavad, on aeg neid kasutada.
 
 Proovime asjadele mitte otsa sõita
 -------------------------------------
@@ -25,7 +22,9 @@ Proovime asjadele mitte otsa sõita
 1.  Ava terminal ning loo ssh-ühendus robotisse.
 2.  Trüki terminali 
 
-    **nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum3_bangbang.py**
+    .. code-block:: bash
+
+       nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum3_bangbang.py
 
     See avab Python’i faili, kus hakkame väärtusi muutma.
 
@@ -52,9 +51,10 @@ Meie robotiga kasutame *bang-bang* kontrollerit nõnda:
 
 - Kui asi on liiga lähedal, tagurdame
 
-**Ülesanne**
+Ülesanne
+--------
 
-1.  Ava uus terminal ning loo samuti ssh-ühendus robotisse.
+1.  Ava uus terminal ning loo ssh-ühendus robotisse.
 2.  Terminalis sisesta 
 
     **roslaunch robotont_teleop teleop_with_laserscan.launch**
