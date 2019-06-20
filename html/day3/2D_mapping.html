@@ -40,7 +40,7 @@
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Otsing" href="../search.html" />
     <link rel="next" title="3D kaardistamine" href="3D_mapping.html" />
-    <link rel="prev" title="AR markerid" href="../day2/AR_markerid.html" /> 
+    <link rel="prev" title="AR markerid" href="AR_markerid.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,10 +101,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../day2/loops.html"><em>For</em>- ja <em>while</em> tsüklid roboti juhtimisel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../day2/functions.html">Funktsioonid</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../day2/kontroller.html">Mis on kontroller?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../day2/AR_markerid.html">AR markerid</a></li>
 </ul>
 <p class="caption"><span class="caption-text">3. Päev</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="AR_markerid.html">AR markerid</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2D kaardistamine, automaatne navigeerimine</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#mis-on-kaardistamine">Mis on kaardistamine?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#laseri-andmete-visualiseerimine-rvizis">Laseri andmete visualiseerimine RVizis</a></li>
@@ -202,12 +202,18 @@ Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks
 </div>
 </li>
 <li><p class="first">Ava teine terminal ning käivita klaviatuurilt juhtimise programm</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>seadista_robot
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_pc_side.launch
 </pre></div>
 </div>
 </li>
 <li><p class="first">Ava kolmas terminal ning käivita laserskanni visualiseerimine RVizis</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_pc_side.launch
+<div class="highlight-bash notranslate"><div class="highlight"><pre>seadista_robot
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_description display_laserscan.launch
 </pre></div>
 </div>
 </li>
@@ -226,14 +232,26 @@ Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks
 <p>Nüüd kui oleme näinud, mida robot näeb, on aeg kaardistama hakata.</p>
 <ol class="arabic">
 <li><p class="first">Ava terminal, loo ssh-ühendus robotisse ning trüki sinna</p>
-<p><strong>roslaunch robotont_teleop teleop_carto_with_navstack.launch</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_carto_with_navstack.launch
+</pre></div>
+</div>
 <p>See tegeleb kaardistamisega.</p>
 </li>
 <li><p class="first">Nüüd ava uus arvutipoolne terminal ning trüki sinna</p>
-<p><strong>roslaunch robotont_description display_2dmapping.launch</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>seadista_robot
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_description display_2dmapping.launch
+</pre></div>
+</div>
 </li>
 <li><p class="first">Ava uus terminal ning trüki sinna</p>
-<p><strong>roslaunch robotont_teleop teleop_pc_side.launch</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>seadista_robot
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop teleop_pc_side.launch
+</pre></div>
+</div>
 <p>Selles terminalis saad robotit juhtida.</p>
 </li>
 <li><p class="first">Nüüd säti enda aknad nii, et näeksid korraga RVizi pilti ning seda terminali, kus klaviatuuriga juhtimine käib.</p>
@@ -255,7 +273,7 @@ Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks
 <a class="reference internal image-reference" href="../_images/poseestimatearrow.png"><img alt="../_images/poseestimatearrow.png" src="../_images/poseestimatearrow.png" style="width: 910.7px; height: 520.8px;" /></a>
 </div>
 </li>
-<li><p class="first">Seejärel kliki sümbolil “2D Nav Goal” ning tiri nool kaardil sinna, kuhu tahad et robot sõidaks.</p>
+<li><p class="first">Seejärel kliki sümbolil “2D Nav Goal” ning tiri nool kaardil sinna, kuhu tahad, et robot sõidaks.</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../_images/2dnavgoal.png"><img alt="../_images/2dnavgoal.png" src="../_images/2dnavgoal.png" style="width: 910.7px; height: 520.8px;" /></a>
 </div>
@@ -281,15 +299,19 @@ mida ja kuidas muutes roboti käitumine muutus.</p>
 <ol class="arabic">
 <li><p class="first">Loo ssh-ühendus robotisse</p>
 </li>
-<li><p class="first">Ava fail planner.yaml käsuga</p>
-<p><strong>nano ~/catkin_ws/src/robotont/robotont_teleop/config/planner.yaml</strong></p>
+<li><p class="first">Ava fail <code class="code docutils literal notranslate"><span class="pre">planner.yaml</span></code> käsuga</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>nano ~/catkin_ws/src/robotont/robotont_teleop/config/planner.yaml
+</pre></div>
+</div>
 </li>
 <li><p class="first">Muuda korraga ainult ühte eelnevaist  parameetrist oma äranägemise järgi.</p>
 </li>
 <li><p class="first">Salvesta ja välju. (Ctrl+X)</p>
 </li>
 <li><p class="first">Käivita uuesti planeerimistarkvara käsuga</p>
-<p><strong>roslaunch robotont_teleop navstack.launch</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_teleop navstack.launch
+</pre></div>
+</div>
 </li>
 <li><p class="first">Proovi planeerida robotile teekond nagu eelmises ülesandes.
 Kas robot käitus teisiti?
@@ -316,7 +338,7 @@ Mine punkti 2 ja proovi parameetreid teisiti muuta.</p>
         <a href="3D_mapping.html" class="btn btn-neutral float-right" title="3D kaardistamine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../day2/AR_markerid.html" class="btn btn-neutral float-left" title="AR markerid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="AR_markerid.html" class="btn btn-neutral float-left" title="AR markerid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -32,6 +32,12 @@ Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks
 
     .. code-block:: bash
 
+       seadista_robot
+
+    ..
+
+    .. code-block:: bash
+
        roslaunch robotont_teleop teleop_pc_side.launch
 
     ..
@@ -40,7 +46,13 @@ Kõigepealt kasutame RVizi roboti kaugusanduri laserskanni pidevaks kujutamiseks
     
     .. code-block:: bash
 
-       roslaunch robotont_teleop teleop_pc_side.launch
+       seadista_robot
+
+    ..
+
+    .. code-block:: bash
+
+       roslaunch robotont_description display_laserscan.launch
 
     ..
 
@@ -59,17 +71,41 @@ Nüüd kui oleme näinud, mida robot näeb, on aeg kaardistama hakata.
 
 1.  Ava terminal, loo ssh-ühendus robotisse ning trüki sinna
     
-    **roslaunch robotont_teleop teleop_carto_with_navstack.launch**
+    .. code-block:: bash
+
+       roslaunch robotont_teleop teleop_carto_with_navstack.launch
+
+    ..
     
     See tegeleb kaardistamisega.
 
 2.  Nüüd ava uus arvutipoolne terminal ning trüki sinna
 
-    **roslaunch robotont_description display_2dmapping.launch**
+    .. code-block:: bash
+
+       seadista_robot
+
+    ..
+
+    .. code-block:: bash
+
+       roslaunch robotont_description display_2dmapping.launch
+
+    ..
 
 3.  Ava uus terminal ning trüki sinna
     
-    **roslaunch robotont_teleop teleop_pc_side.launch**
+    .. code-block:: bash
+
+       seadista_robot
+
+    ..
+
+    .. code-block:: bash
+
+       roslaunch robotont_teleop teleop_pc_side.launch
+
+    ..
     
     Selles terminalis saad robotit juhtida.
 
@@ -95,7 +131,7 @@ Kui kaart on olemas, siis oskab robot ka enda asukoha seal leida. Veel enam, rob
 
                 ..
 
-2.  Seejärel kliki sümbolil “2D Nav Goal” ning tiri nool kaardil sinna, kuhu tahad et robot sõidaks.
+2.  Seejärel kliki sümbolil “2D Nav Goal” ning tiri nool kaardil sinna, kuhu tahad, et robot sõidaks.
 
     .. figure:: ../images/lab05/2dnavgoal.png
                 :scale: 70 %
@@ -130,15 +166,19 @@ Mis juhtub kui neid parameetreid suurendada või vähendada?
 See juhend eeldab, et kaart on tehtud ja RViz käib.
 
 1.  Loo ssh-ühendus robotisse
-2.  Ava fail planner.yaml käsuga
+2.  Ava fail :code:`planner.yaml` käsuga
 
-    **nano ~/catkin_ws/src/robotont/robotont_teleop/config/planner.yaml**
+    .. code-block:: bash
+
+       nano ~/catkin_ws/src/robotont/robotont_teleop/config/planner.yaml
 
 3.  Muuda korraga ainult ühte eelnevaist  parameetrist oma äranägemise järgi.
 4.  Salvesta ja välju. (Ctrl+X)
 5.  Käivita uuesti planeerimistarkvara käsuga
     
-    **roslaunch robotont_teleop navstack.launch**
+    .. code-block:: bash
+    
+       roslaunch robotont_teleop navstack.launch
 
 6.  Proovi planeerida robotile teekond nagu eelmises ülesandes. 
     Kas robot käitus teisiti? 

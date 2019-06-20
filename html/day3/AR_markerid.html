@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Otsing" href="../search.html" />
-    <link rel="next" title="2D kaardistamine, automaatne navigeerimine" href="../day3/2D_mapping.html" />
-    <link rel="prev" title="Mis on kontroller?" href="kontroller.html" /> 
+    <link rel="next" title="2D kaardistamine, automaatne navigeerimine" href="2D_mapping.html" />
+    <link rel="prev" title="Mis on kontroller?" href="../day2/kontroller.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,12 +95,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../day1/roboti_klaviatuurilt_juhtimine.html">Roboti juhtimine klaviatuuriga</a></li>
 </ul>
 <p class="caption"><span class="caption-text">2. Päev</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../day2/sensors.html">Roboti andurite info kuvamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2/move.html">Programmeerime ROS roboti sõitma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2/loops.html"><em>For</em>- ja <em>while</em> tsüklid roboti juhtimisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2/functions.html">Funktsioonid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2/kontroller.html">Mis on kontroller?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">3. Päev</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="sensors.html">Roboti andurite info kuvamine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="move.html">Programmeerime ROS roboti sõitma</a></li>
-<li class="toctree-l1"><a class="reference internal" href="loops.html"><em>For</em>- ja <em>while</em> tsüklid roboti juhtimisel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functions.html">Funktsioonid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kontroller.html">Mis on kontroller?</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">AR markerid</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#mis-on-liitreaalsus-ar-ja-ar-markerid">Mis on liitreaalsus (AR) ja AR-markerid?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tuvastame-markeri-ja-visualiseerime-seda-rvizis">Tuvastame markeri ja visualiseerime seda RVizis</a></li>
@@ -112,11 +115,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#boonus-ulesanne-4">BOONUS: Ülesanne 4</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">3. Päev</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../day3/2D_mapping.html">2D kaardistamine, automaatne navigeerimine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../day3/3D_mapping.html">3D kaardistamine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2D_mapping.html">2D kaardistamine, automaatne navigeerimine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3D_mapping.html">3D kaardistamine</a></li>
 </ul>
 
             
@@ -168,7 +168,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/day2/AR_markerid.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/day3/AR_markerid.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -211,16 +211,19 @@ Meie kasutame AR-markereid, et aidata robotil aru saada, kuhu peaks liikuma.</p>
 <h2>Tuvastame markeri ja visualiseerime seda RVizis<a class="headerlink" href="#tuvastame-markeri-ja-visualiseerime-seda-rvizis" title="Püsiviit sellele pealkirjale">¶</a></h2>
 <p>Esmalt vaatame, kuidas robot markerit näeb.</p>
 <ol class="arabic">
-<li><p class="first">Selleks ava terminal ning loo ssh-ühendus robotisse.</p>
-</li>
-<li><p class="first">Uues terminalis sisesta</p>
-<p><strong>roslaunch robotont_training robotont_ar.launch</strong></p>
+<li><p class="first">Selleks ava terminal ning loo ssh-ühendus robotisse ja sisesta</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>roslaunch robotont_training robotont_ar.launch
+</pre></div>
+</div>
 <p>See paneb käima ROSi draiveri, mis kontrollib rataste kiirusi vastavalt meie sõnumitele
 ning tunneb kaamera abil ära ning publitseerib AR-markerite asukoha.
 <strong>Seda terminali ära kinni pane!</strong></p>
 </li>
 <li><p class="first">Ava uus terminal ning trüki sinna</p>
-<p><strong>roslaunch robotont_description display_ar_marker.launch</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>seadista_robot
+roslaunch robotont_description display_ar_marker.launch
+</pre></div>
+</div>
 </li>
 <li><p class="first">Nüüd võta AR-marker kätte ning liiguta seda kaamera ees, peaksid nägema RVizis, et ilmub roboti ette marker.
 Võid proovida ka mitut markerit korraga.
@@ -248,24 +251,33 @@ näitab y-telg. <em>roll</em>, <em>pitch</em> ja <em>yaw</em> ehk RPY sõltuvad 
 <p>Vaatame, mida näeb robot arvudena AR-markeri kohta.</p>
 <ol class="arabic">
 <li><p class="first">Ava uus terminal, loo ssh-ühendus robotisse ning trüki sinna</p>
-<p><strong>rosrun robotont_blank_scripts praktikum4_ar.py</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>rosrun robotont_training praktikum4_ar.py
+</pre></div>
+</div>
 </li>
 <li><p class="first">Nüüd kui paned AR-markeri kaamera ette (nii, et käega osa sellest ära ei kata),
 siis peaksid terminalist nägema kus see marker kaamera suhtes asub.
 Samuti saad teada, mis on markeri ID, seda pead hiljem ka kasutama.
-Terminalis prinditakse välja „Marker ID“; mis on markeri number, „Marker: X Y Z“,
-mis on markeri koordinaadid kaamera suhtes, „Direction from camera“,
-mis näitab, mis suunas marker on kaamera suhtes ja „RPY“, mis on järjestikku
-<em>roll</em>, <em>pitch</em> ja <em>yaw</em> väärtused.</p>
+Terminalis prinditakse välja</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>„Marker ID“ — markeri number</li>
+<li>„Marker: X Y Z“ — markeri koordinadid kaamera suhtes</li>
+<li>„Direction from camera“ — näitab, mis suunas marker on kaamera suhtes</li>
+<li>„RPY“ — pöörded ümber x, y, z telgede ehk <em>roll</em>, <em>pitch</em> ja <em>yaw</em> väärtused.</li>
+</ol>
+</div></blockquote>
 </li>
 </ol>
 </div>
 <div class="section" id="ulesanne-1">
 <h2>Ülesanne 1<a class="headerlink" href="#ulesanne-1" title="Püsiviit sellele pealkirjale">¶</a></h2>
-<p>Tee programm, mis liigub edasi-tagasi vastavalt AR-markeri kaugusele.</p>
+<p>Tee programm, mis liigutab robotit edasi-tagasi vastavalt AR-markeri kaugusele.</p>
 <ol class="arabic">
 <li><p class="first">Ava uus terminal, loo ssh-ühendus ning seal ava praktikum4_ar.py fail, kasutades käsku</p>
-<p><strong>nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum4_ar.py</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>nano catkin_ws/src/robotont/robotont_training/scripts/praktikum4_ar.py
+</pre></div>
+</div>
 </li>
 <li><p class="first">Otsi koodis kommentaar „CHANGE THIS NUMBER TO YOUR MARKER ID“
 ja selle rea all muuda <em>marker.id</em> == väärtus end markerile vastavaks.</p>
@@ -279,7 +291,9 @@ Funktsioon peabki tagastama <em>twist</em> muutuja, ehk siis käsk, kuidas peab 
 Eeskujuks võid võtta 3.praktikumis tehtud <em>bang-bang</em> kontrolleri.</p>
 </li>
 <li><p class="first">Skriptist väljumiseks Ctrl+X, salvesta ja skripti saad jooksutada käsuga</p>
-<p><strong>rosrun robotont_blank_scripts praktikum4_ar.py</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>rosrun robotont_training praktikum4_ar.py
+</pre></div>
+</div>
 <p>Ctrl+C, et skript peatada.</p>
 </li>
 <li><p class="first">Demonstreeri töötavat kontrollerit juhendajale.</p>
@@ -290,7 +304,7 @@ Eeskujuks võid võtta 3.praktikumis tehtud <em>bang-bang</em> kontrolleri.</p>
 <h2>Ülesanne 2<a class="headerlink" href="#ulesanne-2" title="Püsiviit sellele pealkirjale">¶</a></h2>
 <p>Tee programm, mis liigub küljelt-küljele vastavalt AR-markeri asukohale</p>
 <ol class="arabic simple">
-<li>Ava <strong>praktikum4_ar.py</strong> fail.</li>
+<li>Ava <code class="code docutils literal notranslate"><span class="pre">praktikum4_ar.py</span></code> fail.</li>
 <li>Implementeeri funktsioon, mis liigub olenevalt AR-markeri y-koordinaadist küljelt küljele.
 Robot peab proovima hoida AR-markeri enda jaoks keskel.
 Selleks on koodis valmis pandud funktsioon <em>keep_center</em>.
@@ -302,9 +316,9 @@ NB! Samaaegselt töötab ka eelmises ülesandes tehtud funktsioon.</li>
 <h2>Ülesanne 3<a class="headerlink" href="#ulesanne-3" title="Püsiviit sellele pealkirjale">¶</a></h2>
 <p>Tee programm, mis pöörab vastavalt AR-markeri suunale mis pöörab nii, et AR-marker oleks otse vastas.</p>
 <ol class="arabic simple">
-<li>Ava <strong>praktikum4_ar.py</strong> fail.</li>
-<li>Seal on valmis pandud funktsioon nimega <em>turn_towards_ar</em></li>
-<li>Implementeeri funktsioon, mis pöörab AR-markeri poole. Eesmärk on, et kui AR-markerit pöörata, siis robot keerab nii, et marker oleks täpselt roboti vastas. Vihje: Jälgi mis väärtus markerit pöörates muutub, et teada, mille järgi robotit kontrollida.</li>
+<li>Ava <code class="code docutils literal notranslate"><span class="pre">praktikum4_ar.py</span></code> fail.</li>
+<li>Seal on valmis pandud funktsioon nimega <code class="code docutils literal notranslate"><span class="pre">turn_towards_ar</span></code></li>
+<li>Implementeeri funktsioon, mis pöörab AR-markeri poole. Eesmärk on, et kui AR-markerit pöörata, siis robot keerab nii, et marker oleks täpselt roboti vastas.</li>
 <li>Demonstreeri töötavat kontrollerit juhendajale.</li>
 </ol>
 </div>
@@ -313,7 +327,9 @@ NB! Samaaegselt töötab ka eelmises ülesandes tehtud funktsioon.</li>
 <p>Tee programm, mis teeb ühe markeriga üht asja, teisega teist. Näiteks kui robotile näidata markerit number 3, teeb robot enda ümber tiiru, kui näidata markerit number 4, proovib robot hoida markerit poole meetri kaugusel nagu esimeses ülesandes.</p>
 <ol class="arabic">
 <li><p class="first">Ava praktikum4_ar_tricks.py fail, kasutades käsku</p>
-<p><strong>nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum4_ar_tricks.py</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>nano catkin_ws/src/robotont_training/scripts/praktikum4_ar_tricks.py
+</pre></div>
+</div>
 </li>
 <li><p class="first">Kirjuta koodis märgitud alasse oma kood, millega robot teeb ühe markeri puhul üht trikki, teise markeriga teist trikki.</p>
 </li>
@@ -331,10 +347,10 @@ NB! Samaaegselt töötab ka eelmises ülesandes tehtud funktsioon.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../day3/2D_mapping.html" class="btn btn-neutral float-right" title="2D kaardistamine, automaatne navigeerimine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="2D_mapping.html" class="btn btn-neutral float-right" title="2D kaardistamine, automaatne navigeerimine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="kontroller.html" class="btn btn-neutral float-left" title="Mis on kontroller?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../day2/kontroller.html" class="btn btn-neutral float-left" title="Mis on kontroller?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -37,20 +37,24 @@ Tuvastame markeri ja visualiseerime seda RVizis
 
 Esmalt vaatame, kuidas robot markerit näeb.
 
-1.  Selleks ava terminal ning loo ssh-ühendus robotisse.
-2.  Uues terminalis sisesta 
+1.  Selleks ava terminal ning loo ssh-ühendus robotisse ja sisesta
 
-    **roslaunch robotont_training robotont_ar.launch**
+    .. code-block:: bash
+
+       roslaunch robotont_training robotont_ar.launch
 
     See paneb käima ROSi draiveri, mis kontrollib rataste kiirusi vastavalt meie sõnumitele 
     ning tunneb kaamera abil ära ning publitseerib AR-markerite asukoha. 
     **Seda terminali ära kinni pane!**
 
-3.  Ava uus terminal ning trüki sinna
+2.  Ava uus terminal ning trüki sinna
 
-    **roslaunch robotont_description display_ar_marker.launch**
+    .. code-block:: bash
 
-4.  Nüüd võta AR-marker kätte ning liiguta seda kaamera ees, peaksid nägema RVizis, et ilmub roboti ette marker. 
+       seadista_robot
+       roslaunch robotont_description display_ar_marker.launch
+
+3.  Nüüd võta AR-marker kätte ning liiguta seda kaamera ees, peaksid nägema RVizis, et ilmub roboti ette marker. 
     Võid proovida ka mitut markerit korraga. 
     Kui ei ilmu, kutsu juhendaja.
 
@@ -81,24 +85,29 @@ Vaatame, mida näeb robot arvudena AR-markeri kohta.
 
 1.  Ava uus terminal, loo ssh-ühendus robotisse ning trüki sinna 
 
-    **rosrun robotont_blank_scripts praktikum4_ar.py**
+    .. code-block:: bash
+
+       rosrun robotont_training praktikum4_ar.py
 
 2.  Nüüd kui paned AR-markeri kaamera ette (nii, et käega osa sellest ära ei kata), 
     siis peaksid terminalist nägema kus see marker kaamera suhtes asub. 
     Samuti saad teada, mis on markeri ID, seda pead hiljem ka kasutama.
-    Terminalis prinditakse välja "Marker ID"; mis on markeri number, "Marker: X Y Z", 
-    mis on markeri koordinaadid kaamera suhtes, "Direction from camera", 
-    mis näitab, mis suunas marker on kaamera suhtes ja "RPY", mis on järjestikku 
-    *roll*, *pitch* ja *yaw* väärtused.
+    Terminalis prinditakse välja
+      a) "Marker ID" --- markeri number
+      b) "Marker: X Y Z" --- markeri koordinadid kaamera suhtes
+      c) "Direction from camera" --- näitab, mis suunas marker on kaamera suhtes
+      d) "RPY" --- pöörded ümber x, y, z telgede ehk *roll*, *pitch* ja *yaw* väärtused.
 
 Ülesanne 1
 -------------
 
-Tee programm, mis liigub edasi-tagasi vastavalt AR-markeri kaugusele.
+Tee programm, mis liigutab robotit edasi-tagasi vastavalt AR-markeri kaugusele.
 
 1.  Ava uus terminal, loo ssh-ühendus ning seal ava praktikum4_ar.py fail, kasutades käsku
 
-    **nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum4_ar.py**
+    .. code-block:: bash
+
+       nano catkin_ws/src/robotont/robotont_training/scripts/praktikum4_ar.py
 
 2.  Otsi koodis kommentaar "CHANGE THIS NUMBER TO YOUR MARKER ID" 
     ja selle rea all muuda *marker.id* == väärtus end markerile vastavaks.
@@ -113,7 +122,9 @@ Tee programm, mis liigub edasi-tagasi vastavalt AR-markeri kaugusele.
 
 4.  Skriptist väljumiseks Ctrl+X, salvesta ja skripti saad jooksutada käsuga
 
-    **rosrun robotont_blank_scripts praktikum4_ar.py**
+    .. code-block:: bash
+
+       rosrun robotont_training praktikum4_ar.py
 
     Ctrl+C, et skript peatada.
 5.  Demonstreeri töötavat kontrollerit juhendajale.
@@ -123,7 +134,7 @@ Tee programm, mis liigub edasi-tagasi vastavalt AR-markeri kaugusele.
 
 Tee programm, mis liigub küljelt-küljele vastavalt AR-markeri asukohale
 
-1.  Ava **praktikum4_ar.py** fail.
+1.  Ava :code:`praktikum4_ar.py` fail.
 2.  Implementeeri funktsioon, mis liigub olenevalt AR-markeri y-koordinaadist küljelt küljele. 
     Robot peab proovima hoida AR-markeri enda jaoks keskel.
     Selleks on koodis valmis pandud funktsioon *keep_center*.
@@ -134,9 +145,12 @@ Tee programm, mis liigub küljelt-küljele vastavalt AR-markeri asukohale
 -------------
 Tee programm, mis pöörab vastavalt AR-markeri suunale mis pöörab nii, et AR-marker oleks otse vastas.
 
-1.  Ava **praktikum4_ar.py** fail.
-2.  Seal on valmis pandud funktsioon nimega *turn_towards_ar*
-3.  Implementeeri funktsioon, mis pöörab AR-markeri poole. Eesmärk on, et kui AR-markerit pöörata, siis robot keerab nii, et marker oleks täpselt roboti vastas. Vihje: Jälgi mis väärtus markerit pöörates muutub, et teada, mille järgi robotit kontrollida.
+1.  Ava :code:`praktikum4_ar.py` fail.
+2.  Seal on valmis pandud funktsioon nimega :code:`turn_towards_ar`
+3.  Implementeeri funktsioon, mis pöörab AR-markeri poole. Eesmärk on, et kui AR-markerit pöörata, siis robot keerab nii, et marker oleks täpselt roboti vastas.
+
+    .. tip: Pööra aeglaselt markerit ja uuri välja millise väärtuse järgi robotit kontrollida.
+
 4.  Demonstreeri töötavat kontrollerit juhendajale.
 
 BOONUS: Ülesanne 4
@@ -145,9 +159,9 @@ Tee programm, mis teeb ühe markeriga üht asja, teisega teist. Näiteks kui rob
 
 1.  Ava praktikum4_ar_tricks.py fail, kasutades käsku
 
-    **nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum4_ar_tricks.py**
+    .. code-block:: bash
+
+       nano catkin_ws/src/robotont_training/scripts/praktikum4_ar_tricks.py
 
 2.  Kirjuta koodis märgitud alasse oma kood, millega robot teeb ühe markeri puhul üht trikki, teise markeriga teist trikki.
 3.  Demonstreeri töötavat koodi juhendajale.
-
-

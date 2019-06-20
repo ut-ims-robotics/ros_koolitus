@@ -33,12 +33,12 @@ Tere tulemast ROS koolitusele!
   day2/loops.rst  
   day2/functions.rst  
   day2/kontroller.rst
-  day2/AR_markerid.rst
 
 .. toctree::
   :maxdepth: 1
   :caption: 3. Päev
 
+  day3/AR_markerid.rst
   day3/2D_mapping.rst
   day3/3D_mapping.rst
 

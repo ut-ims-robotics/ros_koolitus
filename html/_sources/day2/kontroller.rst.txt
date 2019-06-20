@@ -24,7 +24,7 @@ Proovime asjadele mitte otsa sõita
 
     .. code-block:: bash
 
-       nano catkin_ws/src/robotont_blank_scripts/scripts/praktikum3_bangbang.py
+       nano catkin_ws/src/robotont/robotont_training/scripts/praktikum3_bangbang.py
 
     See avab Python’i faili, kus hakkame väärtusi muutma.
 
@@ -69,7 +69,7 @@ Meie robotiga kasutame *bang-bang* kontrollerit nõnda:
 5.  Salvesta fail, kasutades klahvikombinatsiooni Ctrl+X. 
 6.  Koodi käitamiseks sisesta terminali
 
-    **rosrun robotont_blank_scripts praktikum3_bangbang.py**
+    **rosrun robotont_training praktikum3_bangbang.py**
 
     Ctrl+C paneb programmi kinni.
 7.  Demonstreeri töötavat kontrollerit juhendajale.
@@ -98,7 +98,7 @@ Selles ülesandes peab robot oskama nurga alt lähenedes avast läbi sõita.
 
 4.  Koodi jooksutamiseks sisesta terminali
 
-    **rosrun robotont_blank_scripts praktikum3_betweenposts.py**
+    **rosrun robotont_training praktikum3_betweenposts.py**
 
 5.  Demonstreeri töötavat robotit juhendajale.
 
